@@ -11,16 +11,16 @@ html {
   outline-offset: 2px;
 }
 
-.high-contrast {
-  filter: contrast(1.5);
-}
-
-body.text-size-lg {
+html.text-size-lg {
   font-size: 1.125rem;
 }
 
-body.text-size-xl {
+html.text-size-xl {
   font-size: 1.25rem;
+}
+
+html.high-contrast {
+  filter: contrast(1.5);
 }
 
 @layer utilities {

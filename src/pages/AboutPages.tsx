@@ -12,10 +12,10 @@ export function MissionPage() {
       <div className="space-y-8">
         <div className="prose prose-gray max-w-none">
           <p className="text-lg text-gray-700 leading-relaxed">
-            ClearPath exists because navigating low vision care is genuinely difficult. The path from a diagnosis to the right specialist, the right device, and the right funding is fragmented, inconsistent, and often invisible to the people who need it most.
+            Low Vision Navigator exists because navigating low vision care is genuinely difficult. The path from a diagnosis to the right specialist, the right device, and the right funding is fragmented, inconsistent, and often invisible to the people who need it most.
           </p>
           <p className="text-gray-600 leading-relaxed mt-4">
-            We built ClearPath to change that. Our goal is a platform that gives patients a clear next step, gives clinicians a practical workflow, and gives caregivers the confidence to support—not just manage.
+            We built Low Vision Navigator to change that. Our goal is a platform that gives patients a clear next step, gives clinicians a practical workflow, and gives caregivers the confidence to support—not just manage.
           </p>
         </div>
 
@@ -129,7 +129,7 @@ export function AccessibilityPage() {
         <section aria-labelledby="commitment-heading">
           <h2 id="commitment-heading" className="text-xl font-bold text-gray-900 mb-4">Our Commitment</h2>
           <p className="text-sm text-gray-600 leading-relaxed mb-4">
-            ClearPath is designed to meet WCAG 2.1 Level AA accessibility guidelines. We are committed to ensuring that people with visual impairments—and all disabilities—can access and use this platform fully.
+            Low Vision Navigator is designed to meet WCAG 2.1 Level AA accessibility guidelines. We are committed to ensuring that people with visual impairments—and all disabilities—can access and use this platform fully.
           </p>
           <ul className="space-y-2">
             {[

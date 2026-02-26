@@ -78,7 +78,7 @@ export function Footer() {
             <div className="h-7 w-7 rounded-lg bg-blue-600 flex items-center justify-center">
               <Eye className="h-4 w-4 text-white" aria-hidden="true" />
             </div>
-            <span className="text-sm font-semibold text-white">ClearPath</span>
+            <span className="text-sm font-semibold text-white">Low Vision Navigator</span>
             <span className="text-sm text-gray-500">Low Vision & Blindness Care</span>
           </div>
 
@@ -91,7 +91,7 @@ export function Footer() {
         </div>
 
         <p className="mt-6 text-xs text-gray-600 max-w-2xl">
-          ClearPath is an educational resource and planning tool. It does not provide medical diagnosis, treatment recommendations, legal advice, or insurance guarantees. Always consult qualified healthcare professionals for medical decisions.
+          Low Vision Navigator is an educational resource and planning tool. It does not provide medical diagnosis, treatment recommendations, legal advice, or insurance guarantees. Always consult qualified healthcare professionals for medical decisions.
         </p>
       </div>
     </footer>

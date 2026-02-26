@@ -21,7 +21,7 @@ export function ProfessionalsHighlight() {
               Built for clinicians, rehab teams, and educators too
             </h2>
             <p className="mt-4 text-blue-100 text-base leading-relaxed">
-              ClearPath gives rehabilitation professionals a structured, problem-oriented workflow—from intake to referral. Built around real clinical constraints, not theoretical ideals.
+              Low Vision Navigator gives rehabilitation professionals a structured, problem-oriented workflow—from intake to referral. Built around real clinical constraints, not theoretical ideals.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link

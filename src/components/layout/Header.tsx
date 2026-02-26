@@ -298,9 +298,9 @@ export function Header() {
 
       <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm" ref={menuRef}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-36">
             <Link to="/" className="flex items-center shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 rounded-md" aria-label="Low Vision Navigator Home">
-              <img src="/logo.png" alt="Low Vision Navigator" className="h-8 w-auto" />
+              <img src="/logo.png" alt="Low Vision Navigator" className="h-32 w-auto" />
             </Link>
 
             <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-0.5">

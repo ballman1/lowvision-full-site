@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Eye, Menu, X, Search, Bookmark, ChevronDown } from 'lucide-react';
+import { Menu, X, Search, Bookmark, ChevronDown } from 'lucide-react';
 
 interface NavLink { label: string; href: string; }
 interface MenuColumn { heading?: string; links: NavLink[]; }
@@ -299,14 +299,8 @@ export function Header() {
       <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm" ref={menuRef}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <Link to="/" className="flex items-center gap-2 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 rounded-md" aria-label="Low Vision Navigator Home">
-              <div className="h-8 w-8 rounded-lg bg-blue-700 flex items-center justify-center">
-                <Eye className="h-4.5 w-4.5 text-white" aria-hidden="true" />
-              </div>
-              <div className="flex flex-col leading-none">
-                <span className="text-base font-bold text-gray-900">Low Vision Navigator</span>
-                <span className="text-[10px] text-gray-500 tracking-wide hidden sm:block">Low Vision Care</span>
-              </div>
+            <Link to="/" className="flex items-center shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 rounded-md" aria-label="Low Vision Navigator Home">
+              <img src="/logo.png" alt="Low Vision Navigator" className="h-8 w-auto" />
             </Link>
 
             <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-0.5">

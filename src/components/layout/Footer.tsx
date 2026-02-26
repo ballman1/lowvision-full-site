@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { Eye } from 'lucide-react';
 
 const columns = [
   {
@@ -74,12 +73,8 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="h-7 w-7 rounded-lg bg-blue-600 flex items-center justify-center">
-              <Eye className="h-4 w-4 text-white" aria-hidden="true" />
-            </div>
-            <span className="text-sm font-semibold text-white">Low Vision Navigator</span>
-            <span className="text-sm text-gray-500">Low Vision & Blindness Care</span>
+          <div className="flex items-center">
+            <img src="/logo.png" alt="Low Vision Navigator" className="h-7 w-auto brightness-0 invert" />
           </div>
 
           <div className="flex flex-wrap gap-4 text-xs text-gray-500">

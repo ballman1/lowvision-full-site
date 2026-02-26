@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ContentPageLayout } from '../components/ui/ContentPageLayout';
-import { CheckCircle, FileText, Download, ArrowRight } from 'lucide-react';
+import { CheckCircle, FileText, Copy, Check, ChevronDown } from 'lucide-react';
 
 export function ReferralPathwaysPage() {
   const pathways = [
@@ -122,41 +123,451 @@ export function FollowUpProtocolsPage() {
   );
 }
 
-export function TemplatesPage() {
-  const templates = [
-    { title: 'Referral Checklist', desc: 'Key information to include when referring to O&M, VRT, OT, TVI, or AT specialists.', type: 'Checklist' },
-    { title: 'Low Vision Visit Note Template', desc: 'Structured template covering chief complaint, functional goals, assessment domains, plan, and referrals.', type: 'Clinical Template' },
-    { title: 'Patient Intake Handout', desc: 'Plain-language handout explaining what to expect at a low vision appointment.', type: 'Patient Handout' },
-    { title: 'Home Safety Assessment Checklist', desc: 'Room-by-room assessment for lighting, fall hazards, contrast, and labeling.', type: 'Assessment Form' },
-    { title: 'Letter of Medical Necessity Template', desc: 'Framework letter for device or rehabilitation service prior authorization.', type: 'Insurance Document' },
-    { title: 'Follow-Up Script (2-Week Check)', desc: 'Guided phone or telehealth follow-up questions for initial device comfort check.', type: 'Clinical Script' },
-  ];
+const TEMPLATES = [
+  {
+    title: 'Referral Checklist',
+    type: 'Checklist',
+    desc: 'Key information to include when referring to O&M, VRT, OT, TVI, or AT specialists.',
+    content: `REFERRAL CHECKLIST — LOW VISION
+Adapt to your letterhead or EHR referral form.
 
+PATIENT INFORMATION
+  Name: ___________________________  DOB: ____________
+  Referring provider: ______________  NPI: ____________
+  Date of low vision evaluation: ____________
+  Diagnosis / ICD-10: ____________________________________________
+
+VISUAL STATUS
+  Best-corrected VA (distance):  OD ______  OS ______  OU ______
+  Best-corrected VA (near):      OD ______  OS ______  OU ______
+  Visual field status: ___________________________________________
+  Contrast sensitivity: __________________________________________
+  Preferred retinal locus (PRL): [ ] Central  [ ] PRL — location: ________
+  Condition stability: [ ] Stable  [ ] Progressive  [ ] Acute/Recent change
+
+FUNCTIONAL GOALS (from patient interview)
+  [ ] Reading — newsprint / books / medication labels / screen
+  [ ] Mobility and outdoor navigation
+  [ ] ADL independence (cooking, medications, personal care, home management)
+  [ ] Work / vocational goals
+  [ ] Leisure / social participation / hobbies
+  Other: _______________________________________________________
+
+CURRENT DEVICES / INTERVENTIONS
+  Optical aids prescribed or trialed: ________________________________
+  Electronic aids trialed: ________________________________________
+  Current lighting modifications: __________________________________
+
+REFERRAL REQUESTED
+  [ ] Orientation & Mobility (O&M) Specialist
+  [ ] Vision Rehabilitation Therapist (VRT)
+  [ ] Occupational Therapist — Vision Specialty
+  [ ] Teacher of the Visually Impaired (TVI)
+  [ ] Assistive Technology Specialist
+  [ ] Social Work / Care Coordination / Benefits Navigation
+  [ ] Neuro-Ophthalmology
+  [ ] Other: ___________________________________________________
+
+SPECIAL CONSIDERATIONS
+  Transportation / access barriers: _________________________________
+  Language / interpreter needed: __________________________________
+  Cognitive or communication considerations: ________________________
+  Caregiver involvement: _________________________________________
+  Urgency: [ ] Routine  [ ] Expedited — reason: ____________________`,
+  },
+  {
+    title: 'Low Vision Visit Note Template',
+    type: 'Clinical Template',
+    desc: 'Structured template covering chief complaint, functional goals, assessment domains, plan, and referrals.',
+    content: `LOW VISION VISIT NOTE
+Date: ____________  Provider: ________________________________
+Patient: _____________________________  DOB: ________________
+Visit type: [ ] Initial evaluation  [ ] Follow-up  [ ] Device fitting
+
+CHIEF COMPLAINT
+Primary concern: _______________________________________________
+Goals stated by patient: _________________________________________
+
+HISTORY
+  Ocular diagnosis: _____________________________________________
+  Duration / onset of vision loss: __________________________________
+  Condition course: [ ] Stable  [ ] Progressive  [ ] Recent change
+  Prior low vision care: [ ] None  [ ] Previous evaluation: ____________
+  Current optical correction: ______________________________________
+  Current aids / devices: _________________________________________
+  Employment / education / living situation: _________________________
+
+FUNCTIONAL HISTORY
+  Reading (near tasks): __________________________________________
+  Mobility / navigation: __________________________________________
+  ADLs (cooking, medications, home): _______________________________
+  Work / school / leisure: _________________________________________
+  Patient-reported priority task: ___________________________________
+
+CLINICAL FINDINGS
+  VA distance (cc):    OD ______  OS ______  OU ______
+  VA near (cc at __ cm): OD ______  OS ______  OU ______
+  Threshold print size: ________ M  /  ________ pt
+  Contrast sensitivity: ___________________________________________
+  Visual fields (confrontation / formal): _____________________________
+  PRL status: [ ] Central fixation  [ ] PRL — location: _______________
+  Fixation stability: [ ] Steady  [ ] Unsteady  [ ] Unmaintainable
+  Oculomotor function: ___________________________________________
+  Additional findings: ____________________________________________
+
+DEVICES TRIALED
+  Optical (type / power / working distance): _________________________
+  Electronic aids: _______________________________________________
+  Filters / tints: _________________________________________________
+  Lighting modifications: __________________________________________
+  Patient response to trials: ______________________________________
+
+ASSESSMENT
+  Primary diagnosis: ____________________________________________
+  Functional prognosis: __________________________________________
+  Barriers identified: ____________________________________________
+
+PLAN
+  Devices prescribed: ____________________________________________
+  Referrals placed: ______________________________________________
+  Patient education provided: _____________________________________
+  Home program / practice tasks: __________________________________
+  Follow-up: ______ weeks
+
+PATIENT GOALS ESTABLISHED
+  1. ___________________________________________________________
+  2. ___________________________________________________________
+  3. ___________________________________________________________`,
+  },
+  {
+    title: 'Patient Intake Handout',
+    type: 'Patient Handout',
+    desc: 'Plain-language handout explaining what to expect at a low vision appointment.',
+    content: `WELCOME TO YOUR LOW VISION APPOINTMENT
+[Practice name / logo here]
+
+WHAT IS A LOW VISION APPOINTMENT?
+A low vision evaluation is different from a routine eye exam. The focus is on
+how your vision affects your daily life — and what tools, training, and
+strategies can help you do more of what matters to you.
+
+WHAT TO BRING
+  • Your current glasses or contact lenses
+  • Any magnifiers, handheld devices, or other aids you already use
+  • A list of 2–3 activities that have become difficult (examples: reading
+    mail, reading medication labels, cooking, watching TV, using a phone)
+  • A list of your current medications
+  • Contact information for your other eye doctors
+  • A family member or caregiver is welcome to join you
+
+WHAT WILL HAPPEN AT YOUR APPOINTMENT
+  1. We will ask you what activities are hardest. Your goals guide everything.
+  2. We will measure your vision — near, distance, contrast, and how you
+     respond to different lighting.
+  3. We will try different magnifying tools, lighting, and other devices to
+     find what helps you most with your specific tasks.
+  4. We will talk about training and services that may be available to you —
+     many at low or no cost through state programs.
+
+WHAT THIS APPOINTMENT IS NOT
+  • It is not a cure or a way to restore vision
+  • It is not a replacement for your regular eye doctor
+  • It is not only for people with severe vision loss — even mild vision
+    changes can affect daily life, and help is available
+
+IMPORTANT
+You do not have to have severe vision loss to benefit from low vision care.
+If vision is affecting any daily activity, an evaluation can help.
+
+AFTER YOUR APPOINTMENT
+You may receive a prescription for magnifying devices, referrals to
+rehabilitation specialists, or information about programs funded through
+your state or insurance. We will explain every recommendation.
+
+QUESTIONS?
+  Phone: ________________________
+  Email: ________________________
+  Office hours: __________________`,
+  },
+  {
+    title: 'Home Safety Assessment Checklist',
+    type: 'Assessment Form',
+    desc: 'Room-by-room assessment for lighting, fall hazards, contrast, and labeling.',
+    content: `HOME SAFETY ASSESSMENT — LOW VISION
+Patient: _____________________________  Date: ________________
+Clinician: ___________________________
+Environment: [ ] Private home  [ ] Apartment  [ ] Assisted living  [ ] Other
+
+LIGHTING
+  [ ] Primary living areas have adequate illumination (≥50 fc for task areas)
+  [ ] Nightlights present in hallways, bathroom, and bedroom
+  [ ] Task lighting available at reading chair, kitchen counter, bathroom mirror
+  [ ] Light switches accessible at room entries (glow-in-dark covers recommended)
+  [ ] No strong glare sources in line of sight from primary seating positions
+  [ ] Transitions between light and dark areas are gradual where possible
+  Notes: _______________________________________________________
+
+FALL HAZARDS
+  [ ] Area rugs secured with non-slip backing or removed
+  [ ] Electrical cords tucked away from walkways
+  [ ] Clutter cleared from main walking paths (≥36" clearance recommended)
+  [ ] Furniture arrangement allows clear navigation paths
+  [ ] Door thresholds are flush or color-contrasted with floor
+  [ ] Step edges / stair nosings clearly marked or lit
+  [ ] Handrails present and secure on all stairs (both sides if possible)
+  [ ] Pets or obstacles in primary pathways addressed
+  Notes: _______________________________________________________
+
+CONTRAST AND LABELING
+  [ ] Light switch plates contrast with surrounding wall
+  [ ] Stair nosings marked with contrasting tape or paint
+  [ ] Appliance controls labeled with high-contrast tape or tactile markers
+  [ ] Medications identified with large-print labels or tactile markers
+  [ ] Important phone numbers available in accessible format
+  [ ] Toilet seat contrasts with floor and surrounding surfaces
+  [ ] Countertops provide contrast with dishes and food items
+  Notes: _______________________________________________________
+
+KITCHEN
+  [ ] Cutting boards contrast with food being prepared
+  [ ] Stove controls positioned accessibly and labeled tactilely
+  [ ] Oven/microwave controls readable or marked at key settings
+  [ ] Smoke and CO detectors functional
+  [ ] Items stored at accessible height and in consistent locations
+  [ ] Adequate lighting over all primary work surfaces
+  Notes: _______________________________________________________
+
+BATHROOM
+  [ ] Grab bars present at toilet and in shower / tub
+  [ ] Non-slip mat in shower and outside tub
+  [ ] Hot / cold clearly marked on faucet handles
+  [ ] Medications stored in organized, accessible manner
+  [ ] Adequate lighting at sink and in shower
+  Notes: _______________________________________________________
+
+EMERGENCY PREPAREDNESS
+  [ ] Emergency contact list in accessible format (large print / audio)
+  [ ] Patient can reach phone in an emergency without glasses or lighting
+  [ ] Exit routes from bedroom are clear and practiced
+  Notes: _______________________________________________________
+
+SUMMARY
+Priority action items:
+  1. ___________________________________________________________
+  2. ___________________________________________________________
+  3. ___________________________________________________________
+Referral recommended: [ ] O&M  [ ] VRT  [ ] OT  [ ] Home modification
+Follow-up: ___________________________________________________`,
+  },
+  {
+    title: 'Letter of Medical Necessity',
+    type: 'Insurance Document',
+    desc: 'Framework letter for device or rehabilitation service prior authorization.',
+    content: `[Provider Name / Practice Name]
+[Address]
+[Phone / Fax]
+[Date]
+
+[Insurance Company Name]
+Attn: Medical Review / Prior Authorization
+[Address or fax number]
+
+Re: Prior Authorization Request — Low Vision Rehabilitation / Assistive Device
+Patient name: ____________________  DOB: ____________
+Member ID: ______________________  Group: ____________
+Requesting provider NPI: __________
+
+Dear Medical Review Department,
+
+I am writing to request prior authorization for [describe service or device,
+e.g., "low vision rehabilitation services" or "electronic video magnifier,
+HCPCS V2610"] for the above-referenced patient currently under my care.
+
+CLINICAL SUMMARY
+[Patient name] is a [age]-year-old [male/female/patient] with a primary
+diagnosis of [diagnosis, ICD-10: ____], resulting in significantly reduced
+visual function. Best-corrected visual acuity measures [OD: ___, OS: ___,
+OU: ___] at distance and [___] at near. [Add relevant findings: visual field
+loss, contrast sensitivity loss, PRL status, condition stability, etc.]
+
+FUNCTIONAL IMPACT
+The patient's vision loss substantially impairs his/her/their ability to
+perform the following activities of daily living:
+  • [Activity 1, e.g., "reading printed medication labels independently"]
+  • [Activity 2, e.g., "preparing meals safely without assistance"]
+  • [Activity 3, e.g., "navigating the home and community environment"]
+
+This functional impairment has been documented through [list evaluations
+used: e.g., functional vision assessment, NEI-VFQ-25, clinical observation].
+
+MEDICAL NECESSITY
+The requested [service/device] is medically necessary to:
+  • [Reason 1, e.g., "enable safe self-administration of medications"]
+  • [Reason 2, e.g., "reduce fall risk and support independent living"]
+  • [Reason 3, e.g., "maintain vocational function and employment"]
+
+[If a device:] Device requested: [Name], [Manufacturer], HCPCS: [code].
+This device was trialed clinically on [date]. Patient demonstrated [describe
+task performance and response, e.g., "ability to read 1M print at 5 cm
+working distance with 8× stand magnifier, compared to inability to read
+standard print without the device"].
+
+Less restrictive alternatives have been considered and are insufficient to
+meet the patient's functional needs because: [explain briefly].
+
+SUPPORTING GUIDELINES
+This request is consistent with:
+  • AAO Preferred Practice Pattern: Vision Rehabilitation (2023)
+  • AOTA Occupational Therapy Practice Framework, 4th Edition
+  • [CMS LCD number if applicable, e.g., L33634]
+
+I am available to provide additional clinical documentation upon request.
+Please contact our office at [phone/fax].
+
+Sincerely,
+
+[Provider signature]
+[Provider name, credentials]
+[NPI: ________]
+[Practice name, address, phone, fax]`,
+  },
+  {
+    title: 'Follow-Up Script (2-Week Check)',
+    type: 'Clinical Script',
+    desc: 'Guided phone or telehealth follow-up questions for initial device comfort and orientation check.',
+    content: `2-WEEK DEVICE FOLLOW-UP SCRIPT
+Purpose: Assess initial adaptation, identify barriers, confirm next steps.
+Format: Phone call or telehealth  |  Estimated time: 10–15 minutes
+
+─────────────────────────────────────────────
+OPENING
+─────────────────────────────────────────────
+"Hi [patient name], this is [your name] calling from [practice name].
+I'm following up on your appointment two weeks ago. Is this a good time
+to talk for about 10 minutes?"
+
+─────────────────────────────────────────────
+DEVICE USE CHECK
+─────────────────────────────────────────────
+1. "Have you had a chance to use the [device name] we talked about?"
+   → If NO: "What's been getting in the way?"
+     Document barrier. Offer to troubleshoot or escalate if needed.
+   → If YES: Continue below.
+
+2. "How often have you been using it — daily, a few times a week, or less?"
+
+3. "Tell me about a specific time you used it. What were you trying to do,
+   and how did it go?"
+
+4. "Is there anything about using it that's been difficult or uncomfortable?"
+   Common barriers to probe:
+     [ ] Working distance feels awkward or too close
+     [ ] Too heavy or tiring to hold
+     [ ] Lighting conditions make it hard to use
+     [ ] Difficult to find focus or set magnification
+     [ ] Self-conscious using it in front of others
+
+─────────────────────────────────────────────
+GOAL REVIEW
+─────────────────────────────────────────────
+5. "When we met, you mentioned [primary goal, e.g., 'reading your mail'].
+   Have you been able to do that with the device?"
+
+6. "Has anything gotten easier in the last two weeks — even small things?"
+
+─────────────────────────────────────────────
+SAFETY CHECK
+─────────────────────────────────────────────
+7. "Have you had any falls, near-falls, or safety incidents at home
+   since your appointment?"
+   → If YES: Document. Assess circumstances. Consider O&M referral.
+
+─────────────────────────────────────────────
+NEXT STEPS
+─────────────────────────────────────────────
+8. "I'd like to schedule your next follow-up. Does [date range] work?"
+
+9. "Before we wrap up — is there anything else I can help with, or
+   anything you're still unsure about?"
+
+─────────────────────────────────────────────
+DOCUMENTATION
+─────────────────────────────────────────────
+Device use frequency:  [ ] Daily  [ ] Weekly  [ ] Rarely  [ ] Not using
+Primary barrier:  _________________________________________________
+Goal progress:  [ ] On track  [ ] Barrier present  [ ] Exceeded expectations
+Safety incident:  [ ] None  [ ] Documented — details: ________________
+Action taken:  ___________________________________________________
+Follow-up scheduled:  ____________________________________________`,
+  },
+];
+
+function TemplateCard({ template }: { template: typeof TEMPLATES[number] }) {
+  const [open, setOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  function handleCopy() {
+    navigator.clipboard.writeText(template.content).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }
+
+  return (
+    <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+      <div className="p-5">
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex-1 min-w-0">
+            <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">{template.type}</span>
+            <h3 className="text-sm font-bold text-gray-900 mt-2">{template.title}</h3>
+            <p className="text-xs text-gray-500 mt-1 leading-relaxed">{template.desc}</p>
+          </div>
+          <FileText className="h-5 w-5 text-gray-300 shrink-0 mt-1" aria-hidden="true" />
+        </div>
+        <button
+          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open}
+          className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 hover:text-blue-900 transition-colors focus-visible:outline-none focus-visible:underline"
+        >
+          <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
+          {open ? 'Collapse' : 'View template'}
+        </button>
+      </div>
+
+      {open && (
+        <div className="border-t border-gray-100">
+          <div className="flex justify-end px-5 pt-3">
+            <button
+              onClick={handleCopy}
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500 hover:text-gray-800 transition-colors focus-visible:outline-none focus-visible:underline"
+              aria-label="Copy template to clipboard"
+            >
+              {copied ? <Check className="h-3.5 w-3.5 text-teal-500" aria-hidden="true" /> : <Copy className="h-3.5 w-3.5" aria-hidden="true" />}
+              {copied ? 'Copied!' : 'Copy to clipboard'}
+            </button>
+          </div>
+          <pre className="px-5 pb-6 pt-2 text-xs text-gray-700 leading-relaxed whitespace-pre-wrap font-mono overflow-x-auto">
+            {template.content}
+          </pre>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function TemplatesPage() {
   return (
     <ContentPageLayout
       title="Templates & Handouts"
       subtitle="Ready-to-use clinical templates, patient handouts, and documentation frameworks."
       breadcrumbs={[{ label: 'For Professionals', href: '/professionals' }, { label: 'Templates' }]}
     >
-      <div className="mb-4 p-4 bg-blue-50 rounded-xl border border-blue-100">
-        <p className="text-sm text-blue-800">Templates are provided as starting frameworks. Adapt to your clinical context, institutional requirements, and patient-specific needs.</p>
+      <div className="mb-6 p-4 bg-blue-50 rounded-xl border border-blue-100">
+        <p className="text-sm text-blue-800">These are starting frameworks — adapt them to your clinical context, institutional requirements, and patient-specific needs. Use "Copy to clipboard" to paste into your EHR, word processor, or documentation system.</p>
       </div>
-      <div className="grid sm:grid-cols-2 gap-4">
-        {templates.map((t) => (
-          <div key={t.title} className="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">{t.type}</span>
-                <h3 className="text-sm font-bold text-gray-900 mt-2">{t.title}</h3>
-                <p className="text-xs text-gray-500 mt-1 leading-relaxed">{t.desc}</p>
-              </div>
-              <FileText className="h-5 w-5 text-gray-300 shrink-0" aria-hidden="true" />
-            </div>
-            <button className="mt-auto inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 hover:text-blue-900 transition-colors focus-visible:outline-none focus-visible:underline">
-              <Download className="h-3.5 w-3.5" aria-hidden="true" />
-              Download template
-            </button>
-          </div>
+      <div className="space-y-4">
+        {TEMPLATES.map((t) => (
+          <TemplateCard key={t.title} template={t} />
         ))}
       </div>
     </ContentPageLayout>

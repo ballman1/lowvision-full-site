@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Layout } from './components/layout/Layout';
 
 import { HomePage } from './pages/HomePage';
@@ -143,6 +143,14 @@ function SearchPage() {
 }
 
 export default function App() {
+  useEffect(() => {
+    const html = document.documentElement;
+    const size = localStorage.getItem('lv-text-size');
+    if (size === 'lg') html.classList.add('text-size-lg');
+    else if (size === 'xl') html.classList.add('text-size-xl');
+    if (localStorage.getItem('lv-high-contrast') === '1') html.classList.add('high-contrast');
+  }, []);
+
   return (
     <BrowserRouter>
       <Suspense fallback={<LoadingSpinner />}>

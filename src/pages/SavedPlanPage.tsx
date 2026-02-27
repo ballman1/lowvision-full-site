@@ -3,6 +3,7 @@ import { useIntake } from '../hooks/useIntake';
 import { generateIntakeResults } from '../lib/intake/rules';
 import { Bookmark, ArrowRight, RefreshCw, ClipboardList } from 'lucide-react';
 import { DisclaimerBox } from '../components/ui/DisclaimerBox';
+import { PageSEO } from '../components/seo/PageSEO';
 
 export function SavedPlanPage() {
   const { answers, isComplete, clearIntake, getSavedAt } = useIntake();
@@ -37,6 +38,10 @@ export function SavedPlanPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <PageSEO
+        title="Your Saved Low Vision Plan"
+        description="View your personalized low vision plan based on your intake questionnaire answers. Your plan is stored privately on your device."
+      />
       <div className="bg-blue-800 text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
           <div className="flex items-center gap-2 mb-3">

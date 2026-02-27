@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ClipboardList, CheckCircle, Clock, Lock, ArrowRight } from 'lucide-react';
 import { DisclaimerBox } from '../components/ui/DisclaimerBox';
 import { useIntake } from '../hooks/useIntake';
+import { PageSEO } from '../components/seo/PageSEO';
 
 export function IntakePage() {
   const { hasSavedData, getSavedAt, clearIntake } = useIntake();
@@ -14,6 +15,11 @@ export function IntakePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+      <PageSEO
+        title="Low Vision Intake Questionnaire"
+        description="Answer a few questions about your vision and daily challenges. Your answers stay on your device and help you find the right rehabilitation services and resources."
+        breadcrumbs={[{ label: 'Intake Questionnaire' }]}
+      />
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-2 rounded-full mb-5">

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Suspense, useEffect } from 'react';
 import { Layout } from './components/layout/Layout';
+import { PageSEO } from './components/seo/PageSEO';
 
 import { HomePage } from './pages/HomePage';
 import { StartHerePage } from './pages/StartHerePage';
@@ -79,6 +80,11 @@ function LoadingSpinner() {
 function StartHereWhatIsPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <PageSEO
+        title="What Is Low Vision?"
+        description="Low vision is a significant visual impairment that cannot be fully corrected with glasses or surgery but is not total blindness. Learn about types, definitions, and next steps."
+        breadcrumbs={[{ label: 'Start Here', href: '/start-here' }, { label: 'What Is Low Vision?' }]}
+      />
       <nav className="text-xs text-gray-400 mb-6 flex gap-1.5">
         <a href="/" className="hover:text-blue-700">Home</a>
         <span>/</span>
@@ -109,6 +115,11 @@ function StartHereWhatIsPage() {
 function StartHereNextStepsPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <PageSEO
+        title="Your First Next Steps After a Low Vision Diagnosis"
+        description="A practical guide to the first actions after learning you have low vision — from finding a specialist to exploring rehabilitation, devices, and funding options."
+        breadcrumbs={[{ label: 'Start Here', href: '/start-here' }, { label: 'Your First Next Steps' }]}
+      />
       <h1 className="text-3xl font-bold text-gray-900 mb-6">Your First Next Steps</h1>
       <div className="space-y-5">
         {[
@@ -135,6 +146,10 @@ function StartHereNextStepsPage() {
 function SearchPage() {
   return (
     <div className="max-w-2xl mx-auto px-4 sm:px-6 py-14">
+      <PageSEO
+        title="Search"
+        description="Search Low Vision Navigator for local resources, rehabilitation services, device guides, coverage information, and more."
+      />
       <h1 className="text-2xl font-bold text-gray-900 mb-6">Search</h1>
       <input type="search" placeholder="Search resources, topics, services..." className="w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 mb-4" autoFocus />
       <p className="text-sm text-gray-500">Type to search for local resources, coverage information, device guides, and site content. Or <a href="/resources" className="text-blue-700 hover:underline">browse the full directory</a>.</p>

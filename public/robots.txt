@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block intake flow results (session-specific, not indexable)
+Disallow: /intake/results
+Disallow: /intake/follow-up
+Disallow: /intake/results/printable-plan
+Disallow: /saved-plan
+
+Sitemap: https://lowvisionnavigator.org/sitemap.xml

@@ -125,6 +125,51 @@ function StartHereWhatIsPage() {
   );
 }
 
+const howToNextStepsSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Your First Next Steps After a Low Vision Diagnosis',
+  description: 'A practical guide to the first actions after learning you have low vision — from finding a specialist to exploring rehabilitation, devices, and funding options.',
+  step: [
+    {
+      '@type': 'HowToStep',
+      position: 1,
+      name: 'Schedule a low vision examination',
+      text: 'Look for a low vision optometrist, ophthalmologist, or clinic that specializes in low vision—not just general eye care. Bring a list of tasks that are difficult. Expect the appointment to take 1–2 hours.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 2,
+      name: 'Contact your state blind services agency',
+      text: 'Most states offer free or low-cost O&M training, rehabilitation therapy, and assistive technology through their blind services agency. No referral needed in most states—you can apply directly.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 3,
+      name: 'Learn what rehabilitation looks like',
+      text: 'Rehabilitation is not just for dramatic vision loss. If vision is affecting any daily task—reading, cooking, mobility, work—rehabilitation can help. Start with a functional vision assessment.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 4,
+      name: 'Explore assistive device options',
+      text: "Don't buy devices online without trying them first. State AT programs offer free demonstrations and short-term loans. A low vision specialist can recommend the right magnification level for your specific tasks.",
+    },
+    {
+      '@type': 'HowToStep',
+      position: 5,
+      name: 'Map your coverage and funding options',
+      text: 'Services and devices are often funded through state agencies, vocational rehabilitation, VA programs, or insurance. Use our Coverage & Funding section to find what applies to your situation.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 6,
+      name: 'Connect with community and peer support',
+      text: 'Talking with others who have navigated vision loss can be one of the most practical resources. Peer support programs, vision loss organizations, and online communities can reduce isolation and provide real-world advice.',
+    },
+  ],
+};
+
 function StartHereNextStepsPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
@@ -132,6 +177,7 @@ function StartHereNextStepsPage() {
         title="Your First Next Steps After a Low Vision Diagnosis"
         description="A practical guide to the first actions after learning you have low vision — from finding a specialist to exploring rehabilitation, devices, and funding options."
         breadcrumbs={[{ label: 'Start Here', href: '/start-here' }, { label: 'Your First Next Steps' }]}
+        schema={howToNextStepsSchema}
       />
       <h1 className="text-3xl font-bold text-gray-900 mb-6">Your First Next Steps</h1>
       <div className="space-y-5">

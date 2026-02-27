@@ -38,14 +38,19 @@ export function ContentPageLayout({
           {breadcrumbs && (
             <nav aria-label="Breadcrumb" className="flex items-center gap-1 text-sm text-blue-200 mb-4">
               <a href="/" className="hover:text-white transition-colors">Home</a>
-              {breadcrumbs.map((item, i) => (
-                <span key={i} className="flex items-center gap-1">
-                  <span className="text-blue-300">/</span>
-                  <span className={i === breadcrumbs.length - 1 ? 'text-white font-medium' : 'text-blue-200'}>
-                    {item.label}
+              {breadcrumbs.map((item, i) => {
+                const isLast = i === breadcrumbs.length - 1;
+                return (
+                  <span key={i} className="flex items-center gap-1">
+                    <span className="text-blue-300">/</span>
+                    {!isLast && item.href ? (
+                      <a href={item.href} className="text-blue-200 hover:text-white transition-colors">{item.label}</a>
+                    ) : (
+                      <span className={isLast ? 'text-white font-medium' : 'text-blue-200'} aria-current={isLast ? 'page' : undefined}>{item.label}</span>
+                    )}
                   </span>
-                </span>
-              ))}
+                );
+              })}
             </nav>
           )}
           <h1 className="text-3xl sm:text-4xl font-bold leading-tight">{title}</h1>

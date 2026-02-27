@@ -16,9 +16,10 @@ interface PageSEOProps {
   canonical?: string;
   breadcrumbs?: BreadcrumbItem[];
   schema?: object | object[];
+  noIndex?: boolean;
 }
 
-export function PageSEO({ title, description, canonical, breadcrumbs, schema }: PageSEOProps) {
+export function PageSEO({ title, description, canonical, breadcrumbs, schema, noIndex }: PageSEOProps) {
   const location = useLocation();
   const canonicalUrl = canonical ?? `${DOMAIN}${location.pathname}`;
   const fullTitle = `${title} | ${SITE_NAME}`;
@@ -50,6 +51,7 @@ export function PageSEO({ title, description, canonical, breadcrumbs, schema }: 
   return (
     <Helmet>
       <title>{fullTitle}</title>
+      {noIndex && <meta name="robots" content="noindex, nofollow" />}
       <meta name="description" content={description} />
       <link rel="canonical" href={canonicalUrl} />
       <meta property="og:title" content={fullTitle} />

@@ -41,6 +41,7 @@ export function SavedPlanPage() {
       <PageSEO
         title="Your Saved Low Vision Plan"
         description="View your personalized low vision plan based on your intake questionnaire answers. Your plan is stored privately on your device."
+        noIndex
       />
       <div className="bg-blue-800 text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">

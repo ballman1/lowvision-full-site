@@ -336,3 +336,249 @@ export function ContactPage() {
     </ContentPageLayout>
   );
 }
+
+export function HowWeReviewResourcesPage() {
+  const steps = [
+    {
+      n: 1,
+      title: 'Initial vetting',
+      body: 'Every organization submitted or identified for inclusion is checked against three criteria: (1) it provides a service directly relevant to people with low vision or blindness; (2) it has verifiable contact information and a functioning website or phone number; and (3) it is an established organization—not a commercial listing, SEO page, or affiliate referral.',
+    },
+    {
+      n: 2,
+      title: 'Accreditation and credential check',
+      body: 'For clinical providers, we check for relevant licensure (optometry, ophthalmology, OT, COMS) at the state level and note whether the organization holds accreditation from bodies such as CARF International or the Commission on Accreditation of Rehabilitation Facilities. For blind services agencies, we verify enrollment in the state VR system and federal funding status.',
+    },
+    {
+      n: 3,
+      title: 'Coverage and service scope review',
+      body: 'We document what the organization actually offers—clinical, rehabilitation, financial assistance, peer support, technology lending, etc.—and cross-reference against published service descriptions, program guides, or direct outreach. We note virtual availability, referral requirements, cost structure, and whether services are open to self-referrals.',
+    },
+    {
+      n: 4,
+      title: 'Clinical advisory review',
+      body: 'Listings in specialized categories (low vision clinics, rehabilitation programs, assistive technology providers) are reviewed by a member of our clinical advisory board before publication. The advisory board is composed of practicing low vision optometrists, vision rehabilitation therapists, orientation & mobility specialists, and assistive technology instructors.',
+    },
+    {
+      n: 5,
+      title: 'Ongoing monitoring',
+      body: 'We re-verify active listings at least annually, and more frequently for organizations with high traffic. We also accept flagged corrections from users—any listing can be reported via our contact page. Flagged listings are reviewed and updated or removed within 5 business days.',
+    },
+  ];
+
+  return (
+    <ContentPageLayout
+      title="How We Review Resources"
+      subtitle="Our editorial process for vetting, publishing, and maintaining listings on Low Vision Navigator."
+      breadcrumbs={[{ label: 'About', href: '/about' }, { label: 'How We Review Resources' }]}
+      description="Learn how Low Vision Navigator vets, reviews, and maintains its directory of rehabilitation services, clinics, and support organizations to ensure accuracy and clinical relevance."
+    >
+      <div className="space-y-10">
+        <div className="prose prose-gray max-w-none">
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Low Vision Navigator is a health information resource. The accuracy and clinical relevance of our listings directly affect people making real decisions about their care. This page describes our review process in full.
+          </p>
+          <p className="text-gray-600 leading-relaxed mt-3">
+            We do not accept payment for placement. Organizations cannot buy their way into our directory. Listings are included because they meet our editorial criteria—not because they have a marketing relationship with us.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 mb-5">Our five-step review process</h2>
+          <ol className="space-y-5">
+            {steps.map(({ n, title, body }) => (
+              <li key={n} className="flex gap-4 bg-white rounded-xl border border-gray-200 p-5">
+                <span className="w-8 h-8 rounded-full bg-blue-700 text-white font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">{n}</span>
+                <div>
+                  <h3 className="text-base font-semibold text-gray-900 mb-1">{title}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
+          <h2 className="text-base font-semibold text-amber-900 mb-2">Coverage and funding information</h2>
+          <p className="text-sm text-amber-800 leading-relaxed">
+            Our coverage, billing, and policy content (Medicare, Medicaid, VA benefits, state programs) is reviewed separately from directory listings. Policy content is reviewed against official CMS, SSA, and VA documentation, and is updated when regulations or coverage determinations change. Our clinical advisory board reviews the clinical framing of policy guidance before publication.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">What we don't include</h2>
+          <ul className="space-y-2">
+            {[
+              'Commercial retailers without a clinical or rehabilitation component',
+              'Affiliate links or paid promotional listings',
+              'Organizations with unresolved complaints or active regulatory actions',
+              'Listings with unverifiable contact information',
+              'Programs that have closed, paused enrollment, or are no longer accepting referrals (when known)',
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-sm text-gray-700">
+                <span className="text-red-400 shrink-0 mt-0.5">✕</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="border-t border-gray-200 pt-8">
+          <h2 className="text-lg font-bold text-gray-900 mb-2">Report an issue</h2>
+          <p className="text-sm text-gray-600">
+            If you find an inaccurate listing, a closed organization, or missing information,{' '}
+            <a href="/about/contact" className="text-blue-700 hover:underline">contact us</a>. Flagged listings are prioritized for re-verification.
+          </p>
+        </div>
+      </div>
+    </ContentPageLayout>
+  );
+}
+
+export function ClinicalAdvisoryBoardPage() {
+  const disciplines = [
+    { role: 'Low Vision Optometry', desc: 'Specialists in low vision examination, optical prescribing, and device fitting.' },
+    { role: 'Vision Rehabilitation Therapy', desc: 'Certified vision rehabilitation therapists (CVRT) who train daily living and adaptive skills.' },
+    { role: 'Orientation & Mobility', desc: 'Certified orientation and mobility specialists (COMS) focused on safe, independent travel.' },
+    { role: 'Assistive Technology', desc: 'Assistive technology instructors (CATIS/ACVREP-certified) specializing in low vision and blindness.' },
+    { role: 'Occupational Therapy', desc: 'OTs with specialized low vision training who bridge clinical and functional rehabilitation.' },
+    { role: 'Ophthalmology', desc: 'Ophthalmologists with specialization in retinal disease and low vision co-management.' },
+  ];
+
+  return (
+    <ContentPageLayout
+      title="Clinical Advisory Board"
+      subtitle="Low Vision Navigator's content is developed and reviewed with input from practicing low vision clinicians."
+      breadcrumbs={[{ label: 'About', href: '/about' }, { label: 'Clinical Advisory Board' }]}
+      description="Low Vision Navigator's clinical advisory board includes practicing low vision optometrists, vision rehabilitation therapists, orientation and mobility specialists, and assistive technology instructors who review our content for clinical accuracy."
+    >
+      <div className="space-y-10">
+        <div className="prose prose-gray max-w-none">
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Our advisory board is composed of practicing clinicians from across the low vision rehabilitation spectrum. Their role is to review content for clinical accuracy, flag outdated guidance, and ensure that the practical realities of low vision care are accurately represented.
+          </p>
+          <p className="text-gray-600 leading-relaxed mt-3">
+            Advisory board members are not paid for listings or referrals. They participate to improve the quality of information available to people navigating vision loss—a population that is consistently underserved by general health information resources.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 mb-5">Disciplines represented</h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {disciplines.map(({ role, desc }) => (
+              <div key={role} className="bg-blue-50 rounded-xl border border-blue-100 p-5">
+                <h3 className="text-sm font-semibold text-blue-900 mb-1.5">{role}</h3>
+                <p className="text-sm text-blue-700">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">What advisory board members review</h2>
+          <ul className="space-y-2.5">
+            {[
+              'Clinical accuracy of rehabilitation, device, and care content',
+              'Appropriateness of clinical terminology and patient-facing framing',
+              'Accuracy of coverage and funding guidance as it relates to clinical practice',
+              'New content sections before publication',
+              'Annual re-review of evergreen clinical content',
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-sm text-gray-700">
+                <span className="text-teal-500 font-bold shrink-0 mt-0.5">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="bg-gray-50 rounded-xl border border-gray-200 p-6">
+          <h2 className="text-base font-semibold text-gray-900 mb-2">Join the advisory board</h2>
+          <p className="text-sm text-gray-600 leading-relaxed mb-4">
+            We are actively expanding our advisory board. If you are a practicing clinician in low vision, vision rehabilitation, orientation & mobility, or a related specialty and are interested in contributing to this resource, we'd like to hear from you.
+          </p>
+          <a href="/about/contact" className="inline-block px-5 py-2.5 bg-blue-700 text-white font-semibold text-sm rounded-xl hover:bg-blue-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2">
+            Contact us
+          </a>
+        </div>
+      </div>
+    </ContentPageLayout>
+  );
+}
+
+export function PartnersPage() {
+  const partnerTypes = [
+    {
+      type: 'Professional Organizations',
+      desc: 'National and regional associations representing low vision clinicians, rehabilitation specialists, and blindness professionals. Partner organizations help us stay current on clinical standards, workforce issues, and service gaps.',
+    },
+    {
+      type: 'Consumer Advocacy Organizations',
+      desc: 'Groups that represent the interests of people with vision loss. These partnerships help ensure that Low Vision Navigator reflects the real-world priorities and experiences of the people it serves.',
+    },
+    {
+      type: 'Research and Academic Institutions',
+      desc: 'University programs and research centers working on low vision rehabilitation, assistive technology, and visual impairment policy. Academic partnerships inform our evidence base and help us identify emerging practices.',
+    },
+    {
+      type: 'State Blind Services Agencies',
+      desc: 'State agencies that administer federally funded vocational rehabilitation and independent living programs for people with visual impairments. These partnerships improve the accuracy of our state-specific resource listings.',
+    },
+  ];
+
+  return (
+    <ContentPageLayout
+      title="Partners & Collaborators"
+      subtitle="Organizations we work with to improve the accuracy, reach, and relevance of Low Vision Navigator."
+      breadcrumbs={[{ label: 'About', href: '/about' }, { label: 'Partners' }]}
+      description="Low Vision Navigator partners with professional organizations, consumer advocacy groups, and state blind services agencies to improve the accuracy and reach of low vision resources."
+    >
+      <div className="space-y-10">
+        <div className="prose prose-gray max-w-none">
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Improving access to low vision care requires more than a website. We work with a range of organizations to verify listings, stay current on clinical and policy changes, and understand the needs of people navigating vision loss across different regions and circumstances.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 mb-5">Partnership categories</h2>
+          <div className="space-y-4">
+            {partnerTypes.map(({ type, desc }) => (
+              <div key={type} className="bg-white rounded-xl border border-gray-200 p-5">
+                <h3 className="text-base font-semibold text-gray-900 mb-1.5">{type}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">Our partnership principles</h2>
+          <ul className="space-y-2.5">
+            {[
+              'We do not accept payment from partners in exchange for editorial content or preferred placement',
+              'Partner relationships do not influence our resource ratings, vetting criteria, or coverage decisions',
+              'We disclose organizational relationships that are relevant to specific content areas',
+              'Partner organizations can flag inaccuracies and suggest additions — all suggestions go through our standard editorial review',
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-sm text-gray-700">
+                <span className="text-teal-500 font-bold shrink-0 mt-0.5">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="bg-gray-50 rounded-xl border border-gray-200 p-6">
+          <h2 className="text-base font-semibold text-gray-900 mb-2">Become a partner</h2>
+          <p className="text-sm text-gray-600 leading-relaxed mb-4">
+            If your organization works in low vision care, blindness services, or vision loss advocacy and is interested in collaborating, we welcome the conversation.
+          </p>
+          <a href="/about/contact" className="inline-block px-5 py-2.5 bg-blue-700 text-white font-semibold text-sm rounded-xl hover:bg-blue-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2">
+            Get in touch
+          </a>
+        </div>
+      </div>
+    </ContentPageLayout>
+  );
+}

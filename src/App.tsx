@@ -65,7 +65,7 @@ import {
   SeniorSupportPage,
 } from './pages/CommunityPages';
 
-import { MissionPage, AccessibilityPage, PrivacyPage, ContactPage } from './pages/AboutPages';
+import { MissionPage, AccessibilityPage, PrivacyPage, ContactPage, ClinicalAdvisoryBoardPage, PartnersPage, HowWeReviewResourcesPage } from './pages/AboutPages';
 import { FAQPage } from './pages/FAQPage';
 import { SavedPlanPage } from './pages/SavedPlanPage';
 
@@ -248,9 +248,9 @@ export default function App() {
 
             <Route path="/about" element={<Navigate to="/about/mission" replace />} />
             <Route path="/about/mission" element={<MissionPage />} />
-            <Route path="/about/clinical-advisory-board" element={<MissionPage />} />
-            <Route path="/about/partners" element={<MissionPage />} />
-            <Route path="/about/how-we-review-resources" element={<MissionPage />} />
+            <Route path="/about/clinical-advisory-board" element={<ClinicalAdvisoryBoardPage />} />
+            <Route path="/about/partners" element={<PartnersPage />} />
+            <Route path="/about/how-we-review-resources" element={<HowWeReviewResourcesPage />} />
             <Route path="/about/accessibility-statement" element={<AccessibilityPage />} />
             <Route path="/about/privacy" element={<PrivacyPage />} />
             <Route path="/about/contact" element={<ContactPage />} />

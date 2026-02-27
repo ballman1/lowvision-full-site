@@ -14,7 +14,7 @@ import { PageSEO } from '../components/seo/PageSEO';
 const homeSchema = [
   {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': 'MedicalOrganization',
     name: 'Low Vision Navigator',
     url: 'https://lowvisionnavigator.org/',
     logo: 'https://lowvisionnavigator.org/logo.png',

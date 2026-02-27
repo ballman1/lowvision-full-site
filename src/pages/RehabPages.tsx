@@ -108,6 +108,21 @@ function RehabPageTemplate({
   );
 }
 
+const rehabItemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Rehabilitation & Training Services for Low Vision',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Functional Vision Assessment', url: 'https://lowvisionnavigator.org/rehab-training/functional-vision-assessment' },
+    { '@type': 'ListItem', position: 2, name: 'ADL Training', url: 'https://lowvisionnavigator.org/rehab-training/adl-training' },
+    { '@type': 'ListItem', position: 3, name: 'Orientation & Mobility (O&M)', url: 'https://lowvisionnavigator.org/rehab-training/orientation-mobility' },
+    { '@type': 'ListItem', position: 4, name: 'Visual Skills Training', url: 'https://lowvisionnavigator.org/rehab-training/visual-skills-training' },
+    { '@type': 'ListItem', position: 5, name: 'Assistive Technology Instruction', url: 'https://lowvisionnavigator.org/rehab-training/assistive-tech-instruction' },
+    { '@type': 'ListItem', position: 6, name: 'Home Modifications', url: 'https://lowvisionnavigator.org/rehab-training/home-modifications' },
+    { '@type': 'ListItem', position: 7, name: 'Tele-Rehab Options', url: 'https://lowvisionnavigator.org/rehab-training/tele-rehab-options' },
+  ],
+};
+
 export function RehabLandingPage() {
   const services = [
     { title: 'Functional Vision Assessment', href: '/rehab-training/functional-vision-assessment', desc: 'Real-world evaluation beyond the exam lane.' },
@@ -124,7 +139,7 @@ export function RehabLandingPage() {
         title="Rehabilitation & Training for Low Vision"
         description="Explore low vision rehabilitation services: functional vision assessments, ADL training, orientation & mobility, visual skills training, assistive technology instruction, home modifications, and tele-rehab options."
         breadcrumbs={[{ label: 'Rehabilitation & Training' }]}
-        schema={medicalPageSchema('Rehabilitation & Training for Low Vision', 'Vision rehabilitation services help people with low vision regain independence through functional assessments, skills training, and assistive technology.')}
+        schema={[medicalPageSchema('Rehabilitation & Training for Low Vision', 'Vision rehabilitation services help people with low vision regain independence through functional assessments, skills training, and assistive technology.'), rehabItemListSchema]}
       />
       <div className="bg-teal-800 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">

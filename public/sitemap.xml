@@ -2,97 +2,97 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- Home -->
-  <url><loc>https://lowvisionnavigator.org/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://lowvisionnavigator.org/</loc><lastmod>2026-02-27</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
 
   <!-- Start Here -->
-  <url><loc>https://lowvisionnavigator.org/start-here</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://lowvisionnavigator.org/start-here/what-is-low-vision</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://lowvisionnavigator.org/start-here/next-steps</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/start-here</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://lowvisionnavigator.org/start-here/what-is-low-vision</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://lowvisionnavigator.org/start-here/next-steps</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Intake -->
-  <url><loc>https://lowvisionnavigator.org/intake</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/intake/start</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/intake</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/intake/start</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Resources -->
-  <url><loc>https://lowvisionnavigator.org/resources</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://lowvisionnavigator.org/resources/us</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/resources/service-types</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/resources/canada</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/resources</loc><lastmod>2026-02-27</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://lowvisionnavigator.org/resources/us</loc><lastmod>2026-02-27</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/resources/service-types</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/resources/canada</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Rehabilitation & Training -->
-  <url><loc>https://lowvisionnavigator.org/rehab-training</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://lowvisionnavigator.org/rehab-training/functional-vision-assessment</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/rehab-training/adl-training</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/rehab-training/orientation-mobility</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/rehab-training/visual-skills-training</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/rehab-training/assistive-tech-instruction</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/rehab-training/home-modifications</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/rehab-training/tele-rehab-options</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/rehab-training</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://lowvisionnavigator.org/rehab-training/functional-vision-assessment</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/rehab-training/adl-training</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/rehab-training/orientation-mobility</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/rehab-training/visual-skills-training</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/rehab-training/assistive-tech-instruction</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/rehab-training/home-modifications</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/rehab-training/tele-rehab-options</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Devices & Technology -->
-  <url><loc>https://lowvisionnavigator.org/devices-technology</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://lowvisionnavigator.org/devices-technology/optical-devices</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/devices-technology/electronic-digital-aids</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/devices-technology/software-apps</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/devices-technology/daily-living-aids</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/devices-technology/glare-light-management</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/devices-technology/braille-literacy-tools</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/devices-technology</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://lowvisionnavigator.org/devices-technology/optical-devices</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/devices-technology/electronic-digital-aids</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/devices-technology/software-apps</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/devices-technology/daily-living-aids</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/devices-technology/glare-light-management</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/devices-technology/braille-literacy-tools</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Coverage & Funding -->
-  <url><loc>https://lowvisionnavigator.org/coverage-funding</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://lowvisionnavigator.org/coverage-funding/medicare</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/coverage-funding/medicaid</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/coverage-funding/medicaid-buy-in</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/coverage-funding/mltc</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/coverage-funding/canada-provincial-plans</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/coverage-funding/va-veterans</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/coverage-funding/private-insurance</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/coverage-funding/appeals-documentation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/coverage-funding</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://lowvisionnavigator.org/coverage-funding/medicare</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/coverage-funding/medicaid</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/coverage-funding/medicaid-buy-in</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/coverage-funding/mltc</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/coverage-funding/canada-provincial-plans</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/coverage-funding/va-veterans</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/coverage-funding/private-insurance</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/coverage-funding/appeals-documentation</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Financial Support -->
-  <url><loc>https://lowvisionnavigator.org/financial-support</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://lowvisionnavigator.org/financial-support/ssdi</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/financial-support/ssi</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/financial-support/tax-relief</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/financial-support/transportation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/financial-support/blind-agencies-commissions</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/financial-support/emergency-help</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/financial-support</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://lowvisionnavigator.org/financial-support/ssdi</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/financial-support/ssi</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/financial-support/tax-relief</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/financial-support/transportation</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/financial-support/blind-agencies-commissions</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/financial-support/emergency-help</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Community & Support -->
-  <url><loc>https://lowvisionnavigator.org/community-support</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/community-support/emotional-support</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/community-support/education-services</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/community-support/employment-vocational</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/community-support/caregiver-family</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/community-support/guide-dog-services</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://lowvisionnavigator.org/community-support/youth-family-pathways</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://lowvisionnavigator.org/community-support/senior-support</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/community-support</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/community-support/emotional-support</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/community-support/education-services</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/community-support/employment-vocational</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/community-support/caregiver-family</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/community-support/guide-dog-services</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://lowvisionnavigator.org/community-support/youth-family-pathways</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://lowvisionnavigator.org/community-support/senior-support</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Professionals -->
-  <url><loc>https://lowvisionnavigator.org/professionals</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lowvisionnavigator.org/professionals/diagnostic-resources</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/professionals/test-selection-recipes</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/professionals/follow-up-modification-protocols</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/professionals/referral-pathways</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lowvisionnavigator.org/professionals/functional-outcomes-metrics</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://lowvisionnavigator.org/professionals/templates</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://lowvisionnavigator.org/professionals/coding-coverage-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://lowvisionnavigator.org/professionals/training-library</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://lowvisionnavigator.org/professionals/research-evidence</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://lowvisionnavigator.org/professionals</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/professionals/diagnostic-resources</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/professionals/test-selection-recipes</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/professionals/follow-up-modification-protocols</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/professionals/referral-pathways</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lowvisionnavigator.org/professionals/functional-outcomes-metrics</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://lowvisionnavigator.org/professionals/templates</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://lowvisionnavigator.org/professionals/coding-coverage-guide</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://lowvisionnavigator.org/professionals/training-library</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://lowvisionnavigator.org/professionals/research-evidence</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
   <!-- About / Trust -->
-  <url><loc>https://lowvisionnavigator.org/about/mission</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://lowvisionnavigator.org/about/clinical-advisory-board</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://lowvisionnavigator.org/about/partners</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://lowvisionnavigator.org/about/how-we-review-resources</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://lowvisionnavigator.org/about/accessibility-statement</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://lowvisionnavigator.org/about/privacy</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://lowvisionnavigator.org/about/contact</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://lowvisionnavigator.org/about/mission</loc><lastmod>2026-01-15</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://lowvisionnavigator.org/about/clinical-advisory-board</loc><lastmod>2026-02-27</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://lowvisionnavigator.org/about/partners</loc><lastmod>2026-02-27</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://lowvisionnavigator.org/about/how-we-review-resources</loc><lastmod>2026-02-27</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://lowvisionnavigator.org/about/accessibility-statement</loc><lastmod>2026-01-15</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://lowvisionnavigator.org/about/privacy</loc><lastmod>2026-01-15</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://lowvisionnavigator.org/about/contact</loc><lastmod>2026-01-15</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
 
   <!-- FAQ -->
-  <url><loc>https://lowvisionnavigator.org/faq</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lowvisionnavigator.org/faq</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Search -->
-  <url><loc>https://lowvisionnavigator.org/search</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://lowvisionnavigator.org/search</loc><lastmod>2026-01-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
 </urlset>

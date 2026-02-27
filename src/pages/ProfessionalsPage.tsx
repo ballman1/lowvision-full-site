@@ -63,6 +63,23 @@ const sections = [
   },
 ];
 
+const professionalsItemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Clinical Resources for Low Vision Professionals',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Diagnostic Resources Hub', url: 'https://lowvisionnavigator.org/professionals/diagnostic-resources' },
+    { '@type': 'ListItem', position: 2, name: 'Test Selection Recipes', url: 'https://lowvisionnavigator.org/professionals/test-selection-recipes' },
+    { '@type': 'ListItem', position: 3, name: 'Follow-Up & Modification Protocols', url: 'https://lowvisionnavigator.org/professionals/follow-up-modification-protocols' },
+    { '@type': 'ListItem', position: 4, name: 'Referral Pathways', url: 'https://lowvisionnavigator.org/professionals/referral-pathways' },
+    { '@type': 'ListItem', position: 5, name: 'Functional Outcomes & Metrics', url: 'https://lowvisionnavigator.org/professionals/functional-outcomes-metrics' },
+    { '@type': 'ListItem', position: 6, name: 'Clinical Templates', url: 'https://lowvisionnavigator.org/professionals/templates' },
+    { '@type': 'ListItem', position: 7, name: 'Coding & Coverage Guide', url: 'https://lowvisionnavigator.org/professionals/coding-coverage-guide' },
+    { '@type': 'ListItem', position: 8, name: 'Training Library', url: 'https://lowvisionnavigator.org/professionals/training-library' },
+    { '@type': 'ListItem', position: 9, name: 'Research & Evidence', url: 'https://lowvisionnavigator.org/professionals/research-evidence' },
+  ],
+};
+
 export function ProfessionalsPage() {
   return (
     <div>
@@ -70,6 +87,7 @@ export function ProfessionalsPage() {
         title="Clinical Workflow Hub — Low Vision Professionals"
         description="Diagnostic resources, test selection guides, referral pathways, outcome metrics, billing templates, and training tools for low vision clinicians and rehabilitation specialists."
         breadcrumbs={[{ label: 'For Professionals' }]}
+        schema={professionalsItemListSchema}
       />
       <div className="bg-blue-800 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">

@@ -25,6 +25,16 @@ const faqSchema = {
   })),
 };
 
+const speakableSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  url: 'https://lowvisionnavigator.org/faq',
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', 'h2', 'h3', 'dt'],
+  },
+};
+
 export function FAQPage() {
   const [active, setActive] = useState('all');
   const filtered = active === 'all' ? faqs : faqs.filter((f) => f.category === active);
@@ -34,7 +44,7 @@ export function FAQPage() {
       title="Frequently Asked Questions"
       subtitle="Answers to the questions people ask most about low vision care, coverage, rehabilitation, and technology."
       breadcrumbs={[{ label: 'FAQ' }]}
-      schema={faqSchema}
+      schema={[faqSchema, speakableSchema]}
     >
       <div className="flex flex-wrap gap-2 mb-8" role="group" aria-label="Filter FAQs by category">
         {CATEGORIES.map(({ key, label }) => (

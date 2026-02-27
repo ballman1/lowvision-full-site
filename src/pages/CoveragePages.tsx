@@ -106,6 +106,22 @@ function CoveragePageTemplate({
   );
 }
 
+const coverageItemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Coverage & Funding Options for Low Vision Services',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Medicare Coverage', url: 'https://lowvisionnavigator.org/coverage-funding/medicare' },
+    { '@type': 'ListItem', position: 2, name: 'Medicaid Coverage', url: 'https://lowvisionnavigator.org/coverage-funding/medicaid' },
+    { '@type': 'ListItem', position: 3, name: 'Medicaid Buy-In for Workers with Disabilities', url: 'https://lowvisionnavigator.org/coverage-funding/medicaid-buy-in' },
+    { '@type': 'ListItem', position: 4, name: 'Managed Long-Term Care (MLTC)', url: 'https://lowvisionnavigator.org/coverage-funding/mltc' },
+    { '@type': 'ListItem', position: 5, name: 'Canada Provincial Plans', url: 'https://lowvisionnavigator.org/coverage-funding/canada-provincial-plans' },
+    { '@type': 'ListItem', position: 6, name: 'VA & Veterans Benefits', url: 'https://lowvisionnavigator.org/coverage-funding/va-veterans' },
+    { '@type': 'ListItem', position: 7, name: 'Private Insurance', url: 'https://lowvisionnavigator.org/coverage-funding/private-insurance' },
+    { '@type': 'ListItem', position: 8, name: 'Appeals & Documentation', url: 'https://lowvisionnavigator.org/coverage-funding/appeals-documentation' },
+  ],
+};
+
 export function CoverageLandingPage() {
   const programs = [
     { title: 'Medicare', href: '/coverage-funding/medicare', desc: 'Exams and some rehab services for Americans 65+.' },
@@ -123,6 +139,7 @@ export function CoverageLandingPage() {
         title="Low Vision Coverage & Funding Guide"
         description="Understand Medicare, Medicaid, VA benefits, and private insurance coverage for low vision exams, rehabilitation, and devices. Plus financial assistance programs."
         breadcrumbs={[{ label: 'Coverage & Funding' }]}
+        schema={coverageItemListSchema}
       />
       <div className="bg-blue-800 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">

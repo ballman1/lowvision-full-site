@@ -122,6 +122,20 @@ function DevicePageTemplate({
   );
 }
 
+const devicesItemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Low Vision Devices & Assistive Technology by Category',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Optical Devices', url: 'https://lowvisionnavigator.org/devices-technology/optical-devices' },
+    { '@type': 'ListItem', position: 2, name: 'Electronic & Digital Aids', url: 'https://lowvisionnavigator.org/devices-technology/electronic-digital-aids' },
+    { '@type': 'ListItem', position: 3, name: 'Software & Apps', url: 'https://lowvisionnavigator.org/devices-technology/software-apps' },
+    { '@type': 'ListItem', position: 4, name: 'Daily Living Aids', url: 'https://lowvisionnavigator.org/devices-technology/daily-living-aids' },
+    { '@type': 'ListItem', position: 5, name: 'Glare & Light Management', url: 'https://lowvisionnavigator.org/devices-technology/glare-light-management' },
+    { '@type': 'ListItem', position: 6, name: 'Braille & Literacy Tools', url: 'https://lowvisionnavigator.org/devices-technology/braille-literacy-tools' },
+  ],
+};
+
 export function DevicesLandingPage() {
   const categories = [
     { title: 'Optical Devices', href: '/devices-technology/optical-devices', desc: 'Handheld/stand magnifiers, high-plus readers, loupes, bioptics.' },
@@ -137,7 +151,7 @@ export function DevicesLandingPage() {
         title="Low Vision Devices & Assistive Technology"
         description="Explore low vision devices by category: optical magnifiers, electronic video magnifiers, screen readers, daily living aids, glare filters, and braille tools. Matched to tasks, not diagnoses."
         breadcrumbs={[{ label: 'Devices & Technology' }]}
-        schema={medicalPageSchema('Low Vision Devices & Assistive Technology', 'A guide to optical, electronic, and software assistive technology devices for people with low vision—matched to real tasks.')}
+        schema={[medicalPageSchema('Low Vision Devices & Assistive Technology', 'A guide to optical, electronic, and software assistive technology devices for people with low vision—matched to real tasks.'), devicesItemListSchema]}
       />
       <div className="bg-gray-800 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">

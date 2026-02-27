@@ -24,6 +24,20 @@ function SupportCard({ title, href, desc, bullets }: { title: string; href: stri
   );
 }
 
+const financialItemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Financial Support Programs for People with Low Vision',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Social Security Disability Insurance (SSDI)', url: 'https://lowvisionnavigator.org/financial-support/ssdi' },
+    { '@type': 'ListItem', position: 2, name: 'Supplemental Security Income (SSI)', url: 'https://lowvisionnavigator.org/financial-support/ssi' },
+    { '@type': 'ListItem', position: 3, name: 'Tax Relief for Vision Loss', url: 'https://lowvisionnavigator.org/financial-support/tax-relief' },
+    { '@type': 'ListItem', position: 4, name: 'Transportation Assistance', url: 'https://lowvisionnavigator.org/financial-support/transportation' },
+    { '@type': 'ListItem', position: 5, name: 'State Blind Agencies & Commissions', url: 'https://lowvisionnavigator.org/financial-support/blind-agencies-commissions' },
+    { '@type': 'ListItem', position: 6, name: 'Emergency Financial Help', url: 'https://lowvisionnavigator.org/financial-support/emergency-help' },
+  ],
+};
+
 export function FinancialSupportPage() {
   return (
     <div>
@@ -31,6 +45,7 @@ export function FinancialSupportPage() {
         title="Financial Support Programs for Low Vision & Blindness"
         description="Explore SSDI, SSI, tax relief, transportation assistance, state blind agency programs, and emergency financial help available to people with low vision or legal blindness."
         breadcrumbs={[{ label: 'Financial Support' }]}
+        schema={financialItemListSchema}
       />
       <div className="bg-blue-800 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">

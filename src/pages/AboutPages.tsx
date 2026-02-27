@@ -2,12 +2,25 @@ import { useState } from 'react';
 import { ContentPageLayout } from '../components/ui/ContentPageLayout';
 import { CheckCircle, ArrowRight, Type, Eye, Monitor } from 'lucide-react';
 
+function aboutPageSchema(name: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name,
+    datePublished: '2026-01-15',
+    dateModified: '2026-02-27',
+    author: { '@id': 'https://lowvisionnavigator.org/#organization' },
+    publisher: { '@id': 'https://lowvisionnavigator.org/#organization' },
+  };
+}
+
 export function MissionPage() {
   return (
     <ContentPageLayout
       title="Our Mission"
       subtitle="Building trust, clarity, and practical tools for people navigating vision loss."
       breadcrumbs={[{ label: 'About', href: '/about' }, { label: 'Mission' }]}
+      schema={aboutPageSchema('Our Mission')}
     >
       <div className="space-y-8">
         <div className="prose prose-gray max-w-none">
@@ -85,6 +98,7 @@ export function AccessibilityPage() {
       title="Accessibility Statement"
       subtitle="Our commitments, accessibility controls, and how to report issues."
       breadcrumbs={[{ label: 'About', href: '/about' }, { label: 'Accessibility' }]}
+      schema={aboutPageSchema('Accessibility Statement')}
     >
       <div className="space-y-10">
         <section aria-labelledby="controls-heading">
@@ -217,6 +231,7 @@ export function PrivacyPage() {
       title="Privacy & Data"
       subtitle="What we collect, what we don't, and why."
       breadcrumbs={[{ label: 'About', href: '/about' }, { label: 'Privacy' }]}
+      schema={aboutPageSchema('Privacy & Data')}
     >
       <div className="space-y-8 prose prose-gray prose-sm max-w-none">
         <section>
@@ -292,6 +307,7 @@ export function ContactPage() {
       title="Contact & Support"
       subtitle="Report an incorrect listing, suggest a resource, or ask for help finding services."
       breadcrumbs={[{ label: 'About', href: '/about' }, { label: 'Contact' }]}
+      schema={aboutPageSchema('Contact & Support')}
     >
       <form onSubmit={handleSubmit} noValidate className="max-w-xl space-y-5">
         <div>
@@ -372,6 +388,7 @@ export function HowWeReviewResourcesPage() {
       subtitle="Our editorial process for vetting, publishing, and maintaining listings on Low Vision Navigator."
       breadcrumbs={[{ label: 'About', href: '/about' }, { label: 'How We Review Resources' }]}
       description="Learn how Low Vision Navigator vets, reviews, and maintains its directory of rehabilitation services, clinics, and support organizations to ensure accuracy and clinical relevance."
+      schema={aboutPageSchema('How We Review Resources')}
     >
       <div className="space-y-10">
         <div className="prose prose-gray max-w-none">
@@ -451,6 +468,7 @@ export function ClinicalAdvisoryBoardPage() {
       subtitle="Low Vision Navigator's content is developed and reviewed with input from practicing low vision clinicians."
       breadcrumbs={[{ label: 'About', href: '/about' }, { label: 'Clinical Advisory Board' }]}
       description="Low Vision Navigator's clinical advisory board includes practicing low vision optometrists, vision rehabilitation therapists, orientation and mobility specialists, and assistive technology instructors who review our content for clinical accuracy."
+      schema={aboutPageSchema('Clinical Advisory Board')}
     >
       <div className="space-y-10">
         <div className="prose prose-gray max-w-none">
@@ -532,6 +550,7 @@ export function PartnersPage() {
       subtitle="Organizations we work with to improve the accuracy, reach, and relevance of Low Vision Navigator."
       breadcrumbs={[{ label: 'About', href: '/about' }, { label: 'Partners' }]}
       description="Low Vision Navigator partners with professional organizations, consumer advocacy groups, and state blind services agencies to improve the accuracy and reach of low vision resources."
+      schema={aboutPageSchema('Partners & Collaborators')}
     >
       <div className="space-y-10">
         <div className="prose prose-gray max-w-none">

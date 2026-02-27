@@ -90,6 +90,17 @@ function LoadingSpinner() {
   );
 }
 
+const whatIsLowVisionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  about: {
+    '@type': 'MedicalCondition',
+    name: 'Low Vision',
+    alternateName: ['Visual Impairment', 'Partial Sight', 'Partial Vision Loss'],
+    description: 'Low vision is a significant visual impairment that cannot be fully corrected with glasses, contact lenses, medication, or surgery but is not total blindness.',
+  },
+};
+
 function StartHereWhatIsPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
@@ -97,6 +108,7 @@ function StartHereWhatIsPage() {
         title="What Is Low Vision?"
         description="Low vision is a significant visual impairment that cannot be fully corrected with glasses or surgery but is not total blindness. Learn about types, definitions, and next steps."
         breadcrumbs={[{ label: 'Start Here', href: '/start-here' }, { label: 'What Is Low Vision?' }]}
+        schema={whatIsLowVisionSchema}
       />
       <nav className="text-xs text-gray-400 mb-6 flex gap-1.5">
         <a href="/" className="hover:text-blue-700">Home</a>

@@ -95,12 +95,28 @@ export function CommunityLandingPage() {
     { title: 'Youth & Family Pathways', href: '/community-support/youth-family-pathways', desc: 'College readiness, transition, and independent living.' },
     { title: 'Senior Support', href: '/community-support/senior-support', desc: 'Programs for older adults adapting to vision changes.' },
   ];
+const communityItemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Community & Support Resources for People with Low Vision',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Emotional Support & Counseling', url: 'https://lowvisionnavigator.org/community-support/emotional-support' },
+    { '@type': 'ListItem', position: 2, name: 'Education Services', url: 'https://lowvisionnavigator.org/community-support/education-services' },
+    { '@type': 'ListItem', position: 3, name: 'Employment & Vocational Rehabilitation', url: 'https://lowvisionnavigator.org/community-support/employment-vocational' },
+    { '@type': 'ListItem', position: 4, name: 'Caregiver & Family Support', url: 'https://lowvisionnavigator.org/community-support/caregiver-family' },
+    { '@type': 'ListItem', position: 5, name: 'Guide Dog Services', url: 'https://lowvisionnavigator.org/community-support/guide-dog-services' },
+    { '@type': 'ListItem', position: 6, name: 'Youth & Family Pathways', url: 'https://lowvisionnavigator.org/community-support/youth-family-pathways' },
+    { '@type': 'ListItem', position: 7, name: 'Senior Support', url: 'https://lowvisionnavigator.org/community-support/senior-support' },
+  ],
+};
+
   return (
     <div>
       <PageSEO
         title="Low Vision Community & Support Resources"
         description="Explore emotional support, education services, employment help, caregiver resources, guide dog programs, and youth and senior support for people with low vision."
         breadcrumbs={[{ label: 'Community & Support' }]}
+        schema={communityItemListSchema}
       />
       <div className="bg-green-800 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">

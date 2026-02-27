@@ -9,11 +9,8 @@ function aboutPageSchema(name: string) {
     name,
     datePublished: '2026-01-15',
     dateModified: '2026-02-27',
-    author: {
-      '@type': 'Organization',
-      name: 'Low Vision Navigator',
-      url: 'https://lowvisionnavigator.org',
-    },
+    author: { '@id': 'https://lowvisionnavigator.org/#organization' },
+    publisher: { '@id': 'https://lowvisionnavigator.org/#organization' },
   };
 }
 

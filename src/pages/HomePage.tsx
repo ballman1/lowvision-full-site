@@ -15,6 +15,7 @@ const homeSchema = [
   {
     '@context': 'https://schema.org',
     '@type': 'MedicalOrganization',
+    '@id': 'https://lowvisionnavigator.org/#organization',
     name: 'Low Vision Navigator',
     url: 'https://lowvisionnavigator.org/',
     logo: 'https://lowvisionnavigator.org/logo.png',
@@ -24,8 +25,10 @@ const homeSchema = [
   {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': 'https://lowvisionnavigator.org/#website',
     name: 'Low Vision Navigator',
     url: 'https://lowvisionnavigator.org/',
+    publisher: { '@id': 'https://lowvisionnavigator.org/#organization' },
   },
 ];
 

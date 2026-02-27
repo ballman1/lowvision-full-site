@@ -1,6 +1,19 @@
 import { Link } from 'react-router-dom';
 import { ContentPageLayout } from '../components/ui/ContentPageLayout';
+import { PageSEO } from '../components/seo/PageSEO';
 import { CheckCircle, ArrowRight } from 'lucide-react';
+
+function medicalPageSchema(name: string, description: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    name,
+    description,
+    about: { '@type': 'MedicalCondition', name: 'Low Vision' },
+    audience: { '@type': 'Patient' },
+    reviewedBy: { '@type': 'Organization', name: 'Low Vision Navigator Clinical Advisory Board' },
+  };
+}
 
 function RehabPageTemplate({
   title,
@@ -31,6 +44,7 @@ function RehabPageTemplate({
       subtitle={subtitle}
       breadcrumbs={[{ label: 'Rehab & Training', href: '/rehab-training' }, { label: breadcrumb }]}
       headerBg="bg-teal-800"
+      schema={medicalPageSchema(title, subtitle)}
     >
       <div className="space-y-8">
         <div className="prose prose-sm max-w-none">
@@ -106,6 +120,12 @@ export function RehabLandingPage() {
   ];
   return (
     <div>
+      <PageSEO
+        title="Rehabilitation & Training for Low Vision"
+        description="Explore low vision rehabilitation services: functional vision assessments, ADL training, orientation & mobility, visual skills training, assistive technology instruction, home modifications, and tele-rehab options."
+        breadcrumbs={[{ label: 'Rehabilitation & Training' }]}
+        schema={medicalPageSchema('Rehabilitation & Training for Low Vision', 'Vision rehabilitation services help people with low vision regain independence through functional assessments, skills training, and assistive technology.')}
+      />
       <div className="bg-teal-800 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <h1 className="text-3xl sm:text-4xl font-bold mb-3">Rehabilitation & Training</h1>

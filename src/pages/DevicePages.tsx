@@ -1,6 +1,19 @@
 import { Link } from 'react-router-dom';
 import { ContentPageLayout } from '../components/ui/ContentPageLayout';
+import { PageSEO } from '../components/seo/PageSEO';
 import { CheckCircle, XCircle, ArrowRight, AlertCircle } from 'lucide-react';
+
+function medicalPageSchema(name: string, description: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    name,
+    description,
+    about: { '@type': 'MedicalCondition', name: 'Low Vision' },
+    audience: { '@type': 'Patient' },
+    reviewedBy: { '@type': 'Organization', name: 'Low Vision Navigator Clinical Advisory Board' },
+  };
+}
 
 const TRAINING_NOTE = 'Device success often depends on training and setup—not just the device itself. Ask your provider about instruction options before purchasing.';
 
@@ -35,6 +48,7 @@ function DevicePageTemplate({
       subtitle={subtitle}
       breadcrumbs={[{ label: 'Devices & Technology', href: '/devices-technology' }, { label: breadcrumb }]}
       headerBg="bg-gray-800"
+      schema={medicalPageSchema(title, subtitle)}
     >
       <div className="space-y-8">
         <div className="flex gap-3 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-900">
@@ -119,6 +133,12 @@ export function DevicesLandingPage() {
   ];
   return (
     <div>
+      <PageSEO
+        title="Low Vision Devices & Assistive Technology"
+        description="Explore low vision devices by category: optical magnifiers, electronic video magnifiers, screen readers, daily living aids, glare filters, and braille tools. Matched to tasks, not diagnoses."
+        breadcrumbs={[{ label: 'Devices & Technology' }]}
+        schema={medicalPageSchema('Low Vision Devices & Assistive Technology', 'A guide to optical, electronic, and software assistive technology devices for people with low vision—matched to real tasks.')}
+      />
       <div className="bg-gray-800 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <h1 className="text-3xl sm:text-4xl font-bold mb-3">Devices & Technology</h1>

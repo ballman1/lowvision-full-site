@@ -1,73 +1,86 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Suspense, useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Layout } from './components/layout/Layout';
 import { PageSEO } from './components/seo/PageSEO';
 
-import { HomePage } from './pages/HomePage';
-import { StartHerePage } from './pages/StartHerePage';
+// Helper: lazy-load a named export from a module
+function lazyNamed<T extends object>(loader: () => Promise<T>, name: keyof T) {
+  return lazy(() => loader().then((m) => ({ default: m[name] as React.ComponentType })));
+}
 
-import { ResourcesPage } from './pages/ResourcesPage';
+const HomePage = lazyNamed(() => import('./pages/HomePage'), 'HomePage');
+const StartHerePage = lazyNamed(() => import('./pages/StartHerePage'), 'StartHerePage');
 
-import { IntakePage } from './pages/IntakePage';
-import { IntakeStartPage } from './pages/IntakeStartPage';
-import { IntakeResultsPage } from './pages/IntakeResultsPage';
+const ResourcesPage = lazyNamed(() => import('./pages/ResourcesPage'), 'ResourcesPage');
 
-import { ProfessionalsPage } from './pages/ProfessionalsPage';
-import { DiagnosticResourcesPage } from './pages/DiagnosticResourcesPage';
-import { TestRecipesPage } from './pages/TestRecipesPage';
-import { ReferralPathwaysPage, FunctionalOutcomesPage, FollowUpProtocolsPage, TemplatesPage } from './pages/ProfessionalSubPages';
+const IntakePage = lazyNamed(() => import('./pages/IntakePage'), 'IntakePage');
+const IntakeStartPage = lazyNamed(() => import('./pages/IntakeStartPage'), 'IntakeStartPage');
+const IntakeResultsPage = lazyNamed(() => import('./pages/IntakeResultsPage'), 'IntakeResultsPage');
 
-import {
-  CoverageLandingPage,
-  MedicarePage,
-  MedicaidPage,
-  VABenefitsPage,
-  PrivateInsurancePage,
-  AppealsPage,
-} from './pages/CoveragePages';
+const ProfessionalsPage = lazyNamed(() => import('./pages/ProfessionalsPage'), 'ProfessionalsPage');
+const DiagnosticResourcesPage = lazyNamed(() => import('./pages/DiagnosticResourcesPage'), 'DiagnosticResourcesPage');
+const TestRecipesPage = lazyNamed(() => import('./pages/TestRecipesPage'), 'TestRecipesPage');
+const ReferralPathwaysPage = lazyNamed(() => import('./pages/ProfessionalSubPages'), 'ReferralPathwaysPage');
+const FunctionalOutcomesPage = lazyNamed(() => import('./pages/ProfessionalSubPages'), 'FunctionalOutcomesPage');
+const FollowUpProtocolsPage = lazyNamed(() => import('./pages/ProfessionalSubPages'), 'FollowUpProtocolsPage');
+const TemplatesPage = lazyNamed(() => import('./pages/ProfessionalSubPages'), 'TemplatesPage');
+const CodingCoverageGuidePage = lazyNamed(() => import('./pages/ProfessionalSubPages'), 'CodingCoverageGuidePage');
+const TrainingLibraryPage = lazyNamed(() => import('./pages/ProfessionalSubPages'), 'TrainingLibraryPage');
+const ResearchEvidencePage = lazyNamed(() => import('./pages/ProfessionalSubPages'), 'ResearchEvidencePage');
 
-import {
-  FinancialSupportPage,
-  SSDIPage,
-  SSIPage,
-  TaxReliefPage,
-} from './pages/FinancialSupportPage';
+const CoverageLandingPage = lazyNamed(() => import('./pages/CoveragePages'), 'CoverageLandingPage');
+const MedicarePage = lazyNamed(() => import('./pages/CoveragePages'), 'MedicarePage');
+const MedicaidPage = lazyNamed(() => import('./pages/CoveragePages'), 'MedicaidPage');
+const VABenefitsPage = lazyNamed(() => import('./pages/CoveragePages'), 'VABenefitsPage');
+const PrivateInsurancePage = lazyNamed(() => import('./pages/CoveragePages'), 'PrivateInsurancePage');
+const AppealsPage = lazyNamed(() => import('./pages/CoveragePages'), 'AppealsPage');
+const MedicaidBuyInPage = lazyNamed(() => import('./pages/CoveragePages'), 'MedicaidBuyInPage');
+const MLTCPage = lazyNamed(() => import('./pages/CoveragePages'), 'MLTCPage');
+const CanadaProvincialPlansPage = lazyNamed(() => import('./pages/CoveragePages'), 'CanadaProvincialPlansPage');
 
-import {
-  RehabLandingPage,
-  FunctionalVisionAssessmentPage,
-  ADLTrainingPage,
-  OrientationMobilityPage,
-  VisualSkillsTrainingPage,
-  AssistiveTechInstructionPage,
-  HomeModificationsPage,
-  TeleRehabPage,
-} from './pages/RehabPages';
+const FinancialSupportPage = lazyNamed(() => import('./pages/FinancialSupportPage'), 'FinancialSupportPage');
+const SSDIPage = lazyNamed(() => import('./pages/FinancialSupportPage'), 'SSDIPage');
+const SSIPage = lazyNamed(() => import('./pages/FinancialSupportPage'), 'SSIPage');
+const TaxReliefPage = lazyNamed(() => import('./pages/FinancialSupportPage'), 'TaxReliefPage');
+const TransportationPage = lazyNamed(() => import('./pages/FinancialSupportPage'), 'TransportationPage');
+const BlindAgenciesPage = lazyNamed(() => import('./pages/FinancialSupportPage'), 'BlindAgenciesPage');
+const EmergencyHelpPage = lazyNamed(() => import('./pages/FinancialSupportPage'), 'EmergencyHelpPage');
 
-import {
-  DevicesLandingPage,
-  OpticalDevicesPage,
-  ElectronicDigitalAidsPage,
-  SoftwareAppsPage,
-  DailyLivingAidsPage,
-  GlareLightManagementPage,
-  BrailleLiteracyPage,
-} from './pages/DevicePages';
+const RehabLandingPage = lazyNamed(() => import('./pages/RehabPages'), 'RehabLandingPage');
+const FunctionalVisionAssessmentPage = lazyNamed(() => import('./pages/RehabPages'), 'FunctionalVisionAssessmentPage');
+const ADLTrainingPage = lazyNamed(() => import('./pages/RehabPages'), 'ADLTrainingPage');
+const OrientationMobilityPage = lazyNamed(() => import('./pages/RehabPages'), 'OrientationMobilityPage');
+const VisualSkillsTrainingPage = lazyNamed(() => import('./pages/RehabPages'), 'VisualSkillsTrainingPage');
+const AssistiveTechInstructionPage = lazyNamed(() => import('./pages/RehabPages'), 'AssistiveTechInstructionPage');
+const HomeModificationsPage = lazyNamed(() => import('./pages/RehabPages'), 'HomeModificationsPage');
+const TeleRehabPage = lazyNamed(() => import('./pages/RehabPages'), 'TeleRehabPage');
 
-import {
-  CommunityLandingPage,
-  EmotionalSupportPage,
-  EducationServicesPage,
-  EmploymentVocationalPage,
-  CaregiverFamilyPage,
-  GuideDogServicesPage,
-  YouthFamilyPage,
-  SeniorSupportPage,
-} from './pages/CommunityPages';
+const DevicesLandingPage = lazyNamed(() => import('./pages/DevicePages'), 'DevicesLandingPage');
+const OpticalDevicesPage = lazyNamed(() => import('./pages/DevicePages'), 'OpticalDevicesPage');
+const ElectronicDigitalAidsPage = lazyNamed(() => import('./pages/DevicePages'), 'ElectronicDigitalAidsPage');
+const SoftwareAppsPage = lazyNamed(() => import('./pages/DevicePages'), 'SoftwareAppsPage');
+const DailyLivingAidsPage = lazyNamed(() => import('./pages/DevicePages'), 'DailyLivingAidsPage');
+const GlareLightManagementPage = lazyNamed(() => import('./pages/DevicePages'), 'GlareLightManagementPage');
+const BrailleLiteracyPage = lazyNamed(() => import('./pages/DevicePages'), 'BrailleLiteracyPage');
 
-import { MissionPage, AccessibilityPage, PrivacyPage, ContactPage } from './pages/AboutPages';
-import { FAQPage } from './pages/FAQPage';
-import { SavedPlanPage } from './pages/SavedPlanPage';
+const CommunityLandingPage = lazyNamed(() => import('./pages/CommunityPages'), 'CommunityLandingPage');
+const EmotionalSupportPage = lazyNamed(() => import('./pages/CommunityPages'), 'EmotionalSupportPage');
+const EducationServicesPage = lazyNamed(() => import('./pages/CommunityPages'), 'EducationServicesPage');
+const EmploymentVocationalPage = lazyNamed(() => import('./pages/CommunityPages'), 'EmploymentVocationalPage');
+const CaregiverFamilyPage = lazyNamed(() => import('./pages/CommunityPages'), 'CaregiverFamilyPage');
+const GuideDogServicesPage = lazyNamed(() => import('./pages/CommunityPages'), 'GuideDogServicesPage');
+const YouthFamilyPage = lazyNamed(() => import('./pages/CommunityPages'), 'YouthFamilyPage');
+const SeniorSupportPage = lazyNamed(() => import('./pages/CommunityPages'), 'SeniorSupportPage');
+
+const MissionPage = lazyNamed(() => import('./pages/AboutPages'), 'MissionPage');
+const AccessibilityPage = lazyNamed(() => import('./pages/AboutPages'), 'AccessibilityPage');
+const PrivacyPage = lazyNamed(() => import('./pages/AboutPages'), 'PrivacyPage');
+const ContactPage = lazyNamed(() => import('./pages/AboutPages'), 'ContactPage');
+const ClinicalAdvisoryBoardPage = lazyNamed(() => import('./pages/AboutPages'), 'ClinicalAdvisoryBoardPage');
+const PartnersPage = lazyNamed(() => import('./pages/AboutPages'), 'PartnersPage');
+const HowWeReviewResourcesPage = lazyNamed(() => import('./pages/AboutPages'), 'HowWeReviewResourcesPage');
+const FAQPage = lazyNamed(() => import('./pages/FAQPage'), 'FAQPage');
+const SavedPlanPage = lazyNamed(() => import('./pages/SavedPlanPage'), 'SavedPlanPage');
 
 function LoadingSpinner() {
   return (
@@ -197,16 +210,16 @@ export default function App() {
             <Route path="/professionals/referral-pathways" element={<ReferralPathwaysPage />} />
             <Route path="/professionals/functional-outcomes-metrics" element={<FunctionalOutcomesPage />} />
             <Route path="/professionals/templates" element={<TemplatesPage />} />
-            <Route path="/professionals/coding-coverage-guide" element={<TemplatesPage />} />
-            <Route path="/professionals/training-library" element={<TemplatesPage />} />
-            <Route path="/professionals/research-evidence" element={<TemplatesPage />} />
+            <Route path="/professionals/coding-coverage-guide" element={<CodingCoverageGuidePage />} />
+            <Route path="/professionals/training-library" element={<TrainingLibraryPage />} />
+            <Route path="/professionals/research-evidence" element={<ResearchEvidencePage />} />
 
             <Route path="/coverage-funding" element={<CoverageLandingPage />} />
             <Route path="/coverage-funding/medicare" element={<MedicarePage />} />
             <Route path="/coverage-funding/medicaid" element={<MedicaidPage />} />
-            <Route path="/coverage-funding/medicaid-buy-in" element={<MedicaidPage />} />
-            <Route path="/coverage-funding/mltc" element={<MedicaidPage />} />
-            <Route path="/coverage-funding/canada-provincial-plans" element={<MedicarePage />} />
+            <Route path="/coverage-funding/medicaid-buy-in" element={<MedicaidBuyInPage />} />
+            <Route path="/coverage-funding/mltc" element={<MLTCPage />} />
+            <Route path="/coverage-funding/canada-provincial-plans" element={<CanadaProvincialPlansPage />} />
             <Route path="/coverage-funding/va-veterans" element={<VABenefitsPage />} />
             <Route path="/coverage-funding/private-insurance" element={<PrivateInsurancePage />} />
             <Route path="/coverage-funding/appeals-documentation" element={<AppealsPage />} />
@@ -215,9 +228,9 @@ export default function App() {
             <Route path="/financial-support/ssdi" element={<SSDIPage />} />
             <Route path="/financial-support/ssi" element={<SSIPage />} />
             <Route path="/financial-support/tax-relief" element={<TaxReliefPage />} />
-            <Route path="/financial-support/transportation" element={<TaxReliefPage />} />
-            <Route path="/financial-support/blind-agencies-commissions" element={<FinancialSupportPage />} />
-            <Route path="/financial-support/emergency-help" element={<FinancialSupportPage />} />
+            <Route path="/financial-support/transportation" element={<TransportationPage />} />
+            <Route path="/financial-support/blind-agencies-commissions" element={<BlindAgenciesPage />} />
+            <Route path="/financial-support/emergency-help" element={<EmergencyHelpPage />} />
 
             <Route path="/rehab-training" element={<RehabLandingPage />} />
             <Route path="/rehab-training/functional-vision-assessment" element={<FunctionalVisionAssessmentPage />} />
@@ -248,9 +261,9 @@ export default function App() {
 
             <Route path="/about" element={<Navigate to="/about/mission" replace />} />
             <Route path="/about/mission" element={<MissionPage />} />
-            <Route path="/about/clinical-advisory-board" element={<MissionPage />} />
-            <Route path="/about/partners" element={<MissionPage />} />
-            <Route path="/about/how-we-review-resources" element={<MissionPage />} />
+            <Route path="/about/clinical-advisory-board" element={<ClinicalAdvisoryBoardPage />} />
+            <Route path="/about/partners" element={<PartnersPage />} />
+            <Route path="/about/how-we-review-resources" element={<HowWeReviewResourcesPage />} />
             <Route path="/about/accessibility-statement" element={<AccessibilityPage />} />
             <Route path="/about/privacy" element={<PrivacyPage />} />
             <Route path="/about/contact" element={<ContactPage />} />

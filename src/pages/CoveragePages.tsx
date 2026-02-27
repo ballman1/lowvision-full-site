@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { AlertCircle, ArrowRight, CheckCircle, ChevronRight } from 'lucide-react';
 import { ContentPageLayout } from '../components/ui/ContentPageLayout';
 import { DisclaimerBox } from '../components/ui/DisclaimerBox';
+import { PageSEO } from '../components/seo/PageSEO';
 
 function InfoSection({ title, items }: { title: string; items: string[] }) {
   return (
@@ -118,6 +119,11 @@ export function CoverageLandingPage() {
   ];
   return (
     <div>
+      <PageSEO
+        title="Low Vision Coverage & Funding Guide"
+        description="Understand Medicare, Medicaid, VA benefits, and private insurance coverage for low vision exams, rehabilitation, and devices. Plus financial assistance programs."
+        breadcrumbs={[{ label: 'Coverage & Funding' }]}
+      />
       <div className="bg-blue-800 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <h1 className="text-3xl sm:text-4xl font-bold mb-3">Coverage & Funding</h1>
@@ -362,5 +368,140 @@ export function AppealsPage() {
         </div>
       </div>
     </ContentPageLayout>
+  );
+}
+
+export function MedicaidBuyInPage() {
+  return (
+    <CoveragePageTemplate
+      title="Medicaid Buy-In for Working People with Disabilities"
+      subtitle="A Medicaid eligibility pathway that lets people with disabilities work and earn income without automatically losing health coverage."
+      breadcrumb="Medicaid Buy-In"
+      helpsWith={[
+        'Low vision exams and rehabilitation services (same coverage as standard Medicaid)',
+        'Assistive devices — many state Medicaid plans cover CCTVs, screen readers, and other aids under Buy-In',
+        'Prescription medications related to eye conditions and comorbidities',
+        'Occupational therapy and vision rehabilitation therapy through Medicaid HCBS waivers',
+        'Transportation to medical appointments (NEMT)',
+        'Continuation of coverage while earning above standard SSI/Medicaid income limits',
+      ]}
+      whoItApplies={[
+        'Working adults with disabilities (including visual impairments) in states that have Buy-In programs',
+        'People who would otherwise lose Medicaid when their earnings exceed the standard income limit',
+        'Most states cap Buy-In eligibility at 250% of FPL or higher for the working disabled population',
+        'Participants may pay a sliding-scale premium based on earned income',
+        'Not dependent on receipt of SSI — designed specifically for people who are working',
+      ]}
+      questions={[
+        'Does my state have a Medicaid Buy-In program? (Most do — check your state Medicaid agency)',
+        'What is the income limit for Buy-In eligibility in my state?',
+        'Will I pay a monthly premium, and how is it calculated?',
+        'What low vision and rehabilitation services are covered under Buy-In in this state?',
+        'Can I transition from standard Medicaid to Buy-In without a gap in coverage?',
+      ]}
+      docsNeeded={[
+        'Proof of disability (SSA determination letter or medical documentation)',
+        'Proof of employment or self-employment income (pay stubs, tax returns)',
+        'Current Medicaid card or eligibility documentation',
+        'State-specific Buy-In application form (varies by state)',
+      ]}
+      relatedLinks={[
+        { label: 'Standard Medicaid', href: '/coverage-funding/medicaid' },
+        { label: 'SSDI Benefits', href: '/financial-support/ssdi' },
+        { label: 'SSI Benefits', href: '/financial-support/ssi' },
+        { label: 'State Blind Agencies', href: '/financial-support/blind-agencies-commissions' },
+      ]}
+      disclaimer="Medicaid Buy-In programs exist in most states but their names, income limits, premium structures, and covered services vary significantly. Contact your state Medicaid agency to confirm program availability and current rules."
+    />
+  );
+}
+
+export function MLTCPage() {
+  return (
+    <CoveragePageTemplate
+      title="Managed Long-Term Care (MLTC) & Home and Community-Based Services"
+      subtitle="How Medicaid manages ongoing long-term care services for people with disabilities, including vision-related home and community supports."
+      breadcrumb="MLTC & HCBS"
+      helpsWith={[
+        'Personal care services at home — aides who assist with ADLs affected by vision loss',
+        'Home modifications funded through some HCBS waivers (ramps, grab bars, lighting changes)',
+        'Adult day programs that accommodate participants with visual impairments',
+        'Nursing home transition services for people moving back to community living',
+        'Assistive technology under some HCBS waiver programs (state-dependent)',
+        'Care coordination and service plan management',
+      ]}
+      whoItApplies={[
+        'Medicaid enrollees who need long-term services and supports (LTSS) due to disability or chronic condition',
+        'In many states, individuals with significant functional limitations qualify — including those with profound vision impairment affecting multiple ADLs',
+        'Older adults (typically 65+) and adults with physical or sensory disabilities',
+        'Must meet both financial Medicaid eligibility and functional needs criteria (determined by assessment)',
+        'Some programs require nursing-home-level-of-care eligibility; others serve community-based individuals',
+      ]}
+      questions={[
+        'Does my state have an MLTC or HCBS waiver program that covers vision-related ADL supports?',
+        'What functional needs assessment process is used to determine eligibility?',
+        'Can I receive personal care services specifically for tasks I cannot do due to low vision?',
+        'Does the waiver program in my state cover assistive technology or home modifications?',
+        'How do I apply — through Medicaid directly or through a local Area Agency on Aging?',
+      ]}
+      docsNeeded={[
+        'Medicaid eligibility documentation',
+        'Medical records documenting vision diagnosis and functional limitations',
+        'Functional needs assessment (completed by state or managed care organization)',
+        'Physician order or supporting documentation if required by the MLTC plan',
+      ]}
+      relatedLinks={[
+        { label: 'Standard Medicaid', href: '/coverage-funding/medicaid' },
+        { label: 'Medicaid Buy-In', href: '/coverage-funding/medicaid-buy-in' },
+        { label: 'Financial Support Overview', href: '/financial-support' },
+        { label: 'Home Modifications', href: '/rehab-training/home-modifications' },
+      ]}
+      disclaimer="MLTC and HCBS waiver programs vary significantly by state in terms of eligibility criteria, covered services, and enrollment capacity. Some states have waiting lists. Contact your state Medicaid agency or Area Agency on Aging to confirm availability."
+    />
+  );
+}
+
+export function CanadaProvincialPlansPage() {
+  return (
+    <CoveragePageTemplate
+      title="Canadian Provincial Assistive Device & Rehabilitation Programs"
+      subtitle="Provincial programs that fund low vision devices, rehabilitation services, and support for Canadians with visual impairments."
+      breadcrumb="Canada Provincial Plans"
+      helpsWith={[
+        'Assistive Devices Program (ADP) in Ontario: funds up to 75% of approved low vision devices',
+        'Alberta Aids to Daily Living (AADL): funds optical, electronic, and daily living aids for eligible residents',
+        'BC Medical Services Plan and PharmaCare: some rehabilitation and device coverage for BC residents',
+        'CNIB (Canadian National Institute for the Blind): rehabilitation, orientation & mobility, and technology training across Canada',
+        'Provincial vision rehabilitation programs through SAQ/SBQ equivalent agencies in each province',
+        'Disability Tax Credit (DTC) and RDSP for eligible Canadians with visual impairments',
+      ]}
+      whoItApplies={[
+        'Canadian residents with a provincial health card and documented vision impairment',
+        'ADP (Ontario): legal blindness or significant visual impairment confirmed by prescribing practitioner',
+        'AADL (Alberta): Alberta residents with a documented functional need for the device',
+        'CNIB services: available to any Canadian with vision loss — no income test for most programs',
+        'DTC eligibility: significant visual impairment that markedly restricts daily activities',
+      ]}
+      questions={[
+        'What is my province\'s assistive device funding program and what does it cover?',
+        'Do I need a prescription from an optometrist or ophthalmologist to access device funding?',
+        'Is CNIB available in my community, and what services does my local office provide?',
+        'Am I eligible for the Disability Tax Credit, and has my ophthalmologist completed the T2201 form?',
+        'Does my province have a provincial vision rehabilitation program separate from CNIB?',
+      ]}
+      docsNeeded={[
+        'Provincial health card',
+        'Ophthalmologist or optometrist report documenting vision loss (visual acuity and field measurements)',
+        'Completed ADP/AADL or equivalent application form signed by prescriber',
+        'T2201 form (Disability Tax Credit Certificate) completed by qualified medical practitioner',
+      ]}
+      relatedLinks={[
+        { label: 'Medicare (US)', href: '/coverage-funding/medicare' },
+        { label: 'Tax Relief (RDSP & DTC)', href: '/financial-support/tax-relief' },
+        { label: 'Find Local Resources', href: '/resources/canada' },
+        { label: 'Rehabilitation & Training', href: '/rehab-training' },
+      ]}
+      disclaimer="Canadian provincial programs change frequently. Contact your provincial health authority, CNIB regional office, or a benefits counselor to confirm current eligibility and coverage before applying."
+    />
   );
 }

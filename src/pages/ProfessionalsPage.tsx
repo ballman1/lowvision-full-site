@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Activity, BookOpen, FileText, Users, BarChart2, RefreshCw } from 'lucide-react';
 import { ContentPageLayout } from '../components/ui/ContentPageLayout';
 import { DisclaimerBox } from '../components/ui/DisclaimerBox';
+import { PageSEO } from '../components/seo/PageSEO';
 
 const sections = [
   {
@@ -65,6 +66,11 @@ const sections = [
 export function ProfessionalsPage() {
   return (
     <div>
+      <PageSEO
+        title="Clinical Workflow Hub — Low Vision Professionals"
+        description="Diagnostic resources, test selection guides, referral pathways, outcome metrics, billing templates, and training tools for low vision clinicians and rehabilitation specialists."
+        breadcrumbs={[{ label: 'For Professionals' }]}
+      />
       <div className="bg-blue-800 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <p className="text-blue-300 text-sm font-semibold mb-2">For Professionals</p>

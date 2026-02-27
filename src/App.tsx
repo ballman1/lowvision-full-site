@@ -1,73 +1,77 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Suspense, useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Layout } from './components/layout/Layout';
 import { PageSEO } from './components/seo/PageSEO';
 
-import { HomePage } from './pages/HomePage';
-import { StartHerePage } from './pages/StartHerePage';
+// Helper: lazy-load a named export from a module
+function lazyNamed<T extends object>(loader: () => Promise<T>, name: keyof T) {
+  return lazy(() => loader().then((m) => ({ default: m[name] as React.ComponentType })));
+}
 
-import { ResourcesPage } from './pages/ResourcesPage';
+const HomePage = lazyNamed(() => import('./pages/HomePage'), 'HomePage');
+const StartHerePage = lazyNamed(() => import('./pages/StartHerePage'), 'StartHerePage');
 
-import { IntakePage } from './pages/IntakePage';
-import { IntakeStartPage } from './pages/IntakeStartPage';
-import { IntakeResultsPage } from './pages/IntakeResultsPage';
+const ResourcesPage = lazyNamed(() => import('./pages/ResourcesPage'), 'ResourcesPage');
 
-import { ProfessionalsPage } from './pages/ProfessionalsPage';
-import { DiagnosticResourcesPage } from './pages/DiagnosticResourcesPage';
-import { TestRecipesPage } from './pages/TestRecipesPage';
-import { ReferralPathwaysPage, FunctionalOutcomesPage, FollowUpProtocolsPage, TemplatesPage } from './pages/ProfessionalSubPages';
+const IntakePage = lazyNamed(() => import('./pages/IntakePage'), 'IntakePage');
+const IntakeStartPage = lazyNamed(() => import('./pages/IntakeStartPage'), 'IntakeStartPage');
+const IntakeResultsPage = lazyNamed(() => import('./pages/IntakeResultsPage'), 'IntakeResultsPage');
 
-import {
-  CoverageLandingPage,
-  MedicarePage,
-  MedicaidPage,
-  VABenefitsPage,
-  PrivateInsurancePage,
-  AppealsPage,
-} from './pages/CoveragePages';
+const ProfessionalsPage = lazyNamed(() => import('./pages/ProfessionalsPage'), 'ProfessionalsPage');
+const DiagnosticResourcesPage = lazyNamed(() => import('./pages/DiagnosticResourcesPage'), 'DiagnosticResourcesPage');
+const TestRecipesPage = lazyNamed(() => import('./pages/TestRecipesPage'), 'TestRecipesPage');
+const ReferralPathwaysPage = lazyNamed(() => import('./pages/ProfessionalSubPages'), 'ReferralPathwaysPage');
+const FunctionalOutcomesPage = lazyNamed(() => import('./pages/ProfessionalSubPages'), 'FunctionalOutcomesPage');
+const FollowUpProtocolsPage = lazyNamed(() => import('./pages/ProfessionalSubPages'), 'FollowUpProtocolsPage');
+const TemplatesPage = lazyNamed(() => import('./pages/ProfessionalSubPages'), 'TemplatesPage');
 
-import {
-  FinancialSupportPage,
-  SSDIPage,
-  SSIPage,
-  TaxReliefPage,
-} from './pages/FinancialSupportPage';
+const CoverageLandingPage = lazyNamed(() => import('./pages/CoveragePages'), 'CoverageLandingPage');
+const MedicarePage = lazyNamed(() => import('./pages/CoveragePages'), 'MedicarePage');
+const MedicaidPage = lazyNamed(() => import('./pages/CoveragePages'), 'MedicaidPage');
+const VABenefitsPage = lazyNamed(() => import('./pages/CoveragePages'), 'VABenefitsPage');
+const PrivateInsurancePage = lazyNamed(() => import('./pages/CoveragePages'), 'PrivateInsurancePage');
+const AppealsPage = lazyNamed(() => import('./pages/CoveragePages'), 'AppealsPage');
 
-import {
-  RehabLandingPage,
-  FunctionalVisionAssessmentPage,
-  ADLTrainingPage,
-  OrientationMobilityPage,
-  VisualSkillsTrainingPage,
-  AssistiveTechInstructionPage,
-  HomeModificationsPage,
-  TeleRehabPage,
-} from './pages/RehabPages';
+const FinancialSupportPage = lazyNamed(() => import('./pages/FinancialSupportPage'), 'FinancialSupportPage');
+const SSDIPage = lazyNamed(() => import('./pages/FinancialSupportPage'), 'SSDIPage');
+const SSIPage = lazyNamed(() => import('./pages/FinancialSupportPage'), 'SSIPage');
+const TaxReliefPage = lazyNamed(() => import('./pages/FinancialSupportPage'), 'TaxReliefPage');
 
-import {
-  DevicesLandingPage,
-  OpticalDevicesPage,
-  ElectronicDigitalAidsPage,
-  SoftwareAppsPage,
-  DailyLivingAidsPage,
-  GlareLightManagementPage,
-  BrailleLiteracyPage,
-} from './pages/DevicePages';
+const RehabLandingPage = lazyNamed(() => import('./pages/RehabPages'), 'RehabLandingPage');
+const FunctionalVisionAssessmentPage = lazyNamed(() => import('./pages/RehabPages'), 'FunctionalVisionAssessmentPage');
+const ADLTrainingPage = lazyNamed(() => import('./pages/RehabPages'), 'ADLTrainingPage');
+const OrientationMobilityPage = lazyNamed(() => import('./pages/RehabPages'), 'OrientationMobilityPage');
+const VisualSkillsTrainingPage = lazyNamed(() => import('./pages/RehabPages'), 'VisualSkillsTrainingPage');
+const AssistiveTechInstructionPage = lazyNamed(() => import('./pages/RehabPages'), 'AssistiveTechInstructionPage');
+const HomeModificationsPage = lazyNamed(() => import('./pages/RehabPages'), 'HomeModificationsPage');
+const TeleRehabPage = lazyNamed(() => import('./pages/RehabPages'), 'TeleRehabPage');
 
-import {
-  CommunityLandingPage,
-  EmotionalSupportPage,
-  EducationServicesPage,
-  EmploymentVocationalPage,
-  CaregiverFamilyPage,
-  GuideDogServicesPage,
-  YouthFamilyPage,
-  SeniorSupportPage,
-} from './pages/CommunityPages';
+const DevicesLandingPage = lazyNamed(() => import('./pages/DevicePages'), 'DevicesLandingPage');
+const OpticalDevicesPage = lazyNamed(() => import('./pages/DevicePages'), 'OpticalDevicesPage');
+const ElectronicDigitalAidsPage = lazyNamed(() => import('./pages/DevicePages'), 'ElectronicDigitalAidsPage');
+const SoftwareAppsPage = lazyNamed(() => import('./pages/DevicePages'), 'SoftwareAppsPage');
+const DailyLivingAidsPage = lazyNamed(() => import('./pages/DevicePages'), 'DailyLivingAidsPage');
+const GlareLightManagementPage = lazyNamed(() => import('./pages/DevicePages'), 'GlareLightManagementPage');
+const BrailleLiteracyPage = lazyNamed(() => import('./pages/DevicePages'), 'BrailleLiteracyPage');
 
-import { MissionPage, AccessibilityPage, PrivacyPage, ContactPage, ClinicalAdvisoryBoardPage, PartnersPage, HowWeReviewResourcesPage } from './pages/AboutPages';
-import { FAQPage } from './pages/FAQPage';
-import { SavedPlanPage } from './pages/SavedPlanPage';
+const CommunityLandingPage = lazyNamed(() => import('./pages/CommunityPages'), 'CommunityLandingPage');
+const EmotionalSupportPage = lazyNamed(() => import('./pages/CommunityPages'), 'EmotionalSupportPage');
+const EducationServicesPage = lazyNamed(() => import('./pages/CommunityPages'), 'EducationServicesPage');
+const EmploymentVocationalPage = lazyNamed(() => import('./pages/CommunityPages'), 'EmploymentVocationalPage');
+const CaregiverFamilyPage = lazyNamed(() => import('./pages/CommunityPages'), 'CaregiverFamilyPage');
+const GuideDogServicesPage = lazyNamed(() => import('./pages/CommunityPages'), 'GuideDogServicesPage');
+const YouthFamilyPage = lazyNamed(() => import('./pages/CommunityPages'), 'YouthFamilyPage');
+const SeniorSupportPage = lazyNamed(() => import('./pages/CommunityPages'), 'SeniorSupportPage');
+
+const MissionPage = lazyNamed(() => import('./pages/AboutPages'), 'MissionPage');
+const AccessibilityPage = lazyNamed(() => import('./pages/AboutPages'), 'AccessibilityPage');
+const PrivacyPage = lazyNamed(() => import('./pages/AboutPages'), 'PrivacyPage');
+const ContactPage = lazyNamed(() => import('./pages/AboutPages'), 'ContactPage');
+const ClinicalAdvisoryBoardPage = lazyNamed(() => import('./pages/AboutPages'), 'ClinicalAdvisoryBoardPage');
+const PartnersPage = lazyNamed(() => import('./pages/AboutPages'), 'PartnersPage');
+const HowWeReviewResourcesPage = lazyNamed(() => import('./pages/AboutPages'), 'HowWeReviewResourcesPage');
+const FAQPage = lazyNamed(() => import('./pages/FAQPage'), 'FAQPage');
+const SavedPlanPage = lazyNamed(() => import('./pages/SavedPlanPage'), 'SavedPlanPage');
 
 function LoadingSpinner() {
   return (

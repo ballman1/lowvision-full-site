@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ContentPageLayout } from '../components/ui/ContentPageLayout';
 import { DisclaimerBox } from '../components/ui/DisclaimerBox';
 import { CheckCircle, ArrowRight } from 'lucide-react';
+import { PageSEO } from '../components/seo/PageSEO';
 
 function SupportCard({ title, href, desc, bullets }: { title: string; href: string; desc: string; bullets: string[] }) {
   return (
@@ -26,6 +27,11 @@ function SupportCard({ title, href, desc, bullets }: { title: string; href: stri
 export function FinancialSupportPage() {
   return (
     <div>
+      <PageSEO
+        title="Financial Support Programs for Low Vision & Blindness"
+        description="Explore SSDI, SSI, tax relief, transportation assistance, state blind agency programs, and emergency financial help available to people with low vision or legal blindness."
+        breadcrumbs={[{ label: 'Financial Support' }]}
+      />
       <div className="bg-blue-800 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <h1 className="text-3xl sm:text-4xl font-bold mb-3">Financial Support</h1>

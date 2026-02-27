@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ContentPageLayout } from '../components/ui/ContentPageLayout';
 import { ArrowRight, CheckCircle } from 'lucide-react';
+import { PageSEO } from '../components/seo/PageSEO';
 
 function CommunityPageTemplate({
   title,
@@ -96,6 +97,11 @@ export function CommunityLandingPage() {
   ];
   return (
     <div>
+      <PageSEO
+        title="Low Vision Community & Support Resources"
+        description="Explore emotional support, education services, employment help, caregiver resources, guide dog programs, and youth and senior support for people with low vision."
+        breadcrumbs={[{ label: 'Community & Support' }]}
+      />
       <div className="bg-green-800 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <h1 className="text-3xl sm:text-4xl font-bold mb-3">Community & Support</h1>

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { AlertCircle, ArrowRight, CheckCircle, ChevronRight } from 'lucide-react';
 import { ContentPageLayout } from '../components/ui/ContentPageLayout';
 import { DisclaimerBox } from '../components/ui/DisclaimerBox';
+import { PageSEO } from '../components/seo/PageSEO';
 
 function InfoSection({ title, items }: { title: string; items: string[] }) {
   return (
@@ -118,6 +119,11 @@ export function CoverageLandingPage() {
   ];
   return (
     <div>
+      <PageSEO
+        title="Low Vision Coverage & Funding Guide"
+        description="Understand Medicare, Medicaid, VA benefits, and private insurance coverage for low vision exams, rehabilitation, and devices. Plus financial assistance programs."
+        breadcrumbs={[{ label: 'Coverage & Funding' }]}
+      />
       <div className="bg-blue-800 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <h1 className="text-3xl sm:text-4xl font-bold mb-3">Coverage & Funding</h1>

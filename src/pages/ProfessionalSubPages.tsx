@@ -555,6 +555,270 @@ function TemplateCard({ template }: { template: typeof TEMPLATES[number] }) {
   );
 }
 
+export function CodingCoverageGuidePage() {
+  const cptCodes = [
+    { code: '92002', desc: 'Ophthalmological services, new patient, intermediate', notes: 'Medicare Part B — requires medical decision-making documentation' },
+    { code: '92004', desc: 'Ophthalmological services, new patient, comprehensive', notes: 'Medicare Part B — includes refraction; note: refraction not separately billable to Medicare' },
+    { code: '92012', desc: 'Ophthalmological services, established patient, intermediate', notes: 'Most common code for follow-up low vision visits' },
+    { code: '92014', desc: 'Ophthalmological services, established patient, comprehensive', notes: 'Use for full re-evaluation visits' },
+    { code: '97535', desc: 'Self-care/home management training, per 15 min', notes: 'ADL training — OT or VRT; requires functional limitation documentation' },
+    { code: '97110', desc: 'Therapeutic exercises, per 15 min', notes: 'Sometimes used for visual skills training (eccentric viewing) — payer-dependent' },
+    { code: '97001', desc: 'Occupational therapy evaluation', notes: 'For initial OT assessment related to vision-based ADL deficits' },
+    { code: '97003', desc: 'OT re-evaluation', notes: 'Used after initial OT evaluation to reassess functional status' },
+    { code: 'G0117', desc: 'Glaucoma screening, high-risk patient, optometrist', notes: 'Medicare-specific HCPCS code; annual for qualifying high-risk patients' },
+  ];
+
+  const icdCodes = [
+    { code: 'H54.0', desc: 'Blindness, both eyes' },
+    { code: 'H54.1', desc: 'Blindness, one eye, low vision other eye' },
+    { code: 'H54.2', desc: 'Low vision, both eyes' },
+    { code: 'H54.50', desc: 'Unqualified visual loss, one eye' },
+    { code: 'H54.7', desc: 'Unspecified visual loss' },
+    { code: 'H35.30', desc: 'Unspecified macular degeneration' },
+    { code: 'H35.31', desc: 'Nonexudative age-related macular degeneration' },
+    { code: 'H35.32', desc: 'Exudative age-related macular degeneration' },
+    { code: 'H40.10', desc: 'Open-angle glaucoma (unspecified)' },
+    { code: 'H35.00', desc: 'Unspecified background retinopathy' },
+    { code: 'H50.9', desc: 'Unspecified amblyopia' },
+    { code: 'H47.10', desc: 'Optic atrophy, unspecified' },
+  ];
+
+  return (
+    <ContentPageLayout
+      title="Billing, Coding & Coverage Guide"
+      subtitle="CPT and ICD-10 codes for low vision and rehabilitation services, with Medicare documentation requirements and common denial patterns."
+      breadcrumbs={[{ label: 'For Professionals', href: '/professionals' }, { label: 'Coding & Coverage' }]}
+      description="Billing and coding reference for low vision exams and rehabilitation: CPT codes, ICD-10 codes, Medicare documentation requirements, LMN templates, and common denial reasons."
+    >
+      <div className="space-y-10">
+        <div className="mb-6 p-4 bg-amber-50 rounded-xl border border-amber-200">
+          <p className="text-sm text-amber-800">Coding rules change frequently. Verify current codes and payer policies before billing. This guide is for educational reference and does not constitute billing advice.</p>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Commonly used CPT codes</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-gray-200 bg-gray-50">
+                  <th className="text-left px-3 py-2.5 font-semibold text-gray-700 w-20">CPT Code</th>
+                  <th className="text-left px-3 py-2.5 font-semibold text-gray-700">Description</th>
+                  <th className="text-left px-3 py-2.5 font-semibold text-gray-700 hidden sm:table-cell">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cptCodes.map((row, i) => (
+                  <tr key={row.code} className={`border-b border-gray-100 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
+                    <td className="px-3 py-2.5 font-mono text-blue-700 font-semibold">{row.code}</td>
+                    <td className="px-3 py-2.5 text-gray-800">{row.desc}</td>
+                    <td className="px-3 py-2.5 text-gray-500 hidden sm:table-cell">{row.notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 mb-4">ICD-10 codes for low vision</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-gray-200 bg-gray-50">
+                  <th className="text-left px-3 py-2.5 font-semibold text-gray-700 w-24">ICD-10</th>
+                  <th className="text-left px-3 py-2.5 font-semibold text-gray-700">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {icdCodes.map((row, i) => (
+                  <tr key={row.code} className={`border-b border-gray-100 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
+                    <td className="px-3 py-2.5 font-mono text-blue-700 font-semibold">{row.code}</td>
+                    <td className="px-3 py-2.5 text-gray-800">{row.desc}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Common Medicare denial reasons</h2>
+          <div className="space-y-3">
+            {[
+              { reason: 'Refraction billed to Medicare Part B', fix: 'Refraction is a statutory non-covered service under Medicare. Bill separately to patient or supplemental plan, or have patient sign ABN.' },
+              { reason: 'Optical low vision devices billed to Medicare', fix: 'Medicare does not cover optical aids (magnifiers, telescopes, bioptics). Document and inform patient upfront; refer to VR or state blind agency for funding.' },
+              { reason: 'Lack of medical necessity documentation', fix: 'Include functional impact on daily activities. Document specific tasks affected (reading medication labels, driving, cooking) and link to diagnosis with ICD-10 code.' },
+              { reason: 'Exceeding therapy cap without exception', fix: 'Use KX modifier to bypass cap when services are medically necessary and documented. Annual therapy cap applies unless exceptions apply.' },
+              { reason: '"Not a covered benefit" for assistive technology', fix: 'Most electronic low vision aids are not covered by Medicare. Refer to VA (for veterans), state VR, or Medicaid Waiver programs for alternative funding.' },
+            ].map(({ reason, fix }) => (
+              <div key={reason} className="bg-white rounded-xl border border-gray-200 p-5">
+                <p className="text-sm font-semibold text-red-700 mb-1.5">Denial reason: {reason}</p>
+                <p className="text-sm text-gray-600">{fix}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-3">
+          <a href="/professionals" className="text-sm text-blue-700 hover:underline">← All Professional Resources</a>
+          <a href="/professionals/templates" className="text-sm text-blue-700 hover:underline">Templates & Handouts</a>
+          <a href="/coverage-funding/appeals-documentation" className="text-sm text-blue-700 hover:underline">Appeals & Documentation</a>
+        </div>
+      </div>
+    </ContentPageLayout>
+  );
+}
+
+export function TrainingLibraryPage() {
+  const resources = [
+    {
+      category: 'Certification Programs',
+      items: [
+        { title: 'ACVREP (Academy for Certification of Vision Rehabilitation and Education Professionals)', desc: 'Certifications for COMS, CVRT, CATIS, and other vision rehabilitation specialties. CE credit tracking and renewal available through the ACVREP portal.', url: 'acvrep.org' },
+        { title: 'American Academy of Optometry — Low Vision Section', desc: 'CME-accredited programs for low vision optometrists including the Diplomate in Low Vision credential.', url: 'aaopt.org' },
+        { title: 'AOTA Specialty Certification in Low Vision (SCLV)', desc: 'Post-professional certification for occupational therapists specializing in low vision rehabilitation.', url: 'aota.org' },
+      ],
+    },
+    {
+      category: 'Continuing Education',
+      items: [
+        { title: 'AFB CareerConnect Professional Development', desc: 'Free and low-cost webinars and courses on low vision rehabilitation practice, assistive technology, and service delivery for professionals.', url: 'afb.org' },
+        { title: 'Vision Aware — Professional Resources', desc: 'Online training modules for low vision specialists on topics including AMD, glaucoma, pediatric low vision, and technology.', url: 'visionaware.org' },
+        { title: 'Lighthouse Guild Professional Training', desc: 'CME and CEU courses for ophthalmologists, optometrists, and rehabilitation professionals. Includes distance learning options.', url: 'lighthouseguild.org' },
+      ],
+    },
+    {
+      category: 'Clinical Practice Resources',
+      items: [
+        { title: 'Clinical Practice Guidelines — Low Vision Rehabilitation (VA/DoD)', desc: 'Evidence-based clinical practice guidelines for low vision rehabilitation from the Veterans Affairs and Department of Defense. Freely downloadable.', url: 'healthquality.va.gov' },
+        { title: 'National Academies Report: Making Eye Health a Population Health Imperative', desc: 'Comprehensive policy and practice report on the state of vision rehabilitation in the US. Includes workforce, access, and outcomes data.', url: 'nationalacademies.org' },
+        { title: 'WHO International Classification of Functioning, Disability and Health (ICF)', desc: 'The WHO framework for documenting functional vision in the context of disability — used in clinical documentation and outcomes measurement.', url: 'who.int' },
+      ],
+    },
+    {
+      category: 'Assistive Technology Training',
+      items: [
+        { title: 'Freedom Scientific (JAWS/ZoomText) Training', desc: 'Free and paid training for screen readers and magnification software. Useful for AT instructors onboarding new users.', url: 'freedomscientific.com' },
+        { title: 'Apple Accessibility Training', desc: "Apple's accessibility resources for assistive technology professionals, including VoiceOver and Zoom training for iOS and macOS.", url: 'apple.com/accessibility' },
+        { title: 'Microsoft Accessibility Resource Center', desc: 'Training and tools for Microsoft Narrator, Magnifier, and accessibility features across Windows and Office 365.', url: 'microsoft.com/en-us/accessibility' },
+      ],
+    },
+  ];
+
+  return (
+    <ContentPageLayout
+      title="Training Library for Low Vision Professionals"
+      subtitle="Certification programs, continuing education, clinical practice guidelines, and assistive technology training resources."
+      breadcrumbs={[{ label: 'For Professionals', href: '/professionals' }, { label: 'Training Library' }]}
+    >
+      <div className="space-y-8">
+        {resources.map(({ category, items }) => (
+          <div key={category}>
+            <h2 className="text-lg font-bold text-gray-900 mb-4">{category}</h2>
+            <div className="space-y-3">
+              {items.map(({ title, desc, url }) => (
+                <div key={title} className="bg-white rounded-xl border border-gray-200 p-5">
+                  <div className="flex items-start justify-between gap-3 mb-1.5">
+                    <h3 className="text-sm font-semibold text-gray-900">{title}</h3>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-2">{desc}</p>
+                  <span className="text-xs text-blue-600 font-mono">{url}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+        <div className="flex flex-wrap gap-3">
+          <a href="/professionals" className="text-sm text-blue-700 hover:underline">← All Professional Resources</a>
+          <a href="/professionals/research-evidence" className="text-sm text-blue-700 hover:underline">Research & Evidence</a>
+        </div>
+      </div>
+    </ContentPageLayout>
+  );
+}
+
+export function ResearchEvidencePage() {
+  const keyStudies = [
+    { title: 'LIVEMD (Low Vision Intervention Trial)', summary: 'Randomized trial demonstrating statistically significant improvements in visual acuity, reading, and quality of life with structured low vision rehabilitation. Key evidence for comprehensive rehab model.', source: 'JAMA Ophthalmology, 2018' },
+    { title: 'National Eye Institute Low Vision Education Program Research', summary: 'Population-level data on unmet rehabilitation needs. Found that fewer than 10% of people with low vision who could benefit from rehabilitation are referred to services.', source: 'NEI, ongoing' },
+    { title: 'Impact of Low Vision Rehabilitation on VA/VFQ-25 Outcomes', summary: 'Multiple studies show statistically significant improvements on the Visual Function Questionnaire-25 following structured O&M and ADL rehabilitation, with sustained gains at 6-month follow-up.', source: 'Ophthalmology, multiple years' },
+    { title: 'Eccentric Viewing Training Outcomes', summary: 'Systematic review showing eccentric viewing training significantly improves reading speed and accuracy in patients with central scotomas (AMD, Stargardt). Most benefit seen with specialist-guided practice.', source: 'Cochrane Reviews / IOVS' },
+    { title: 'Tele-Rehabilitation for Low Vision: Feasibility and Outcomes', summary: 'Post-pandemic research demonstrating non-inferiority of tele-rehabilitation to in-person for ADL and reading outcomes, with superior access for rural and mobility-limited populations.', source: 'Optometry and Vision Science, 2021–2023' },
+  ];
+
+  return (
+    <ContentPageLayout
+      title="Research & Evidence Base for Low Vision Rehabilitation"
+      subtitle="Key studies, systematic reviews, and clinical practice guidelines supporting evidence-based low vision rehabilitation."
+      breadcrumbs={[{ label: 'For Professionals', href: '/professionals' }, { label: 'Research & Evidence' }]}
+    >
+      <div className="space-y-10">
+        <div className="bg-blue-50 border border-blue-100 rounded-xl p-5">
+          <p className="text-sm text-blue-800 leading-relaxed">
+            Low vision rehabilitation has a growing evidence base, but access to that evidence is scattered across ophthalmology, optometry, occupational therapy, and rehabilitation medicine literature. This page collects the most clinically relevant findings for practitioners.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 mb-5">Key studies and evidence summaries</h2>
+          <div className="space-y-4">
+            {keyStudies.map(({ title, summary, source }) => (
+              <div key={title} className="bg-white rounded-xl border border-gray-200 p-5">
+                <h3 className="text-sm font-semibold text-gray-900 mb-1.5">{title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed mb-2">{summary}</p>
+                <span className="text-xs text-blue-600 font-medium">{source}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Clinical practice guidelines</h2>
+          <div className="space-y-3">
+            {[
+              { org: 'VA/DoD', title: 'VA/DoD Clinical Practice Guideline for Low Vision Rehabilitation', desc: 'The most comprehensive evidence-based clinical guideline for low vision rehabilitation in the US. Covers assessment, intervention, AT, and follow-up. Freely available.', url: 'healthquality.va.gov' },
+              { org: 'AAO', title: 'Preferred Practice Pattern: Vision Rehabilitation', desc: 'American Academy of Ophthalmology PPP for vision rehabilitation, including low vision services. Updated periodically; provides referral and co-management guidance.', url: 'aao.org' },
+              { org: 'AOTA', title: 'Low Vision and Blindness: Occupational Therapy Practice Guidelines', desc: 'Evidence-based practice guidelines for OT in low vision. Includes intervention descriptions, outcome measures, and evidence ratings.', url: 'aota.org' },
+            ].map(({ org, title, desc, url }) => (
+              <div key={title} className="bg-white rounded-xl border border-gray-200 p-5">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <span className="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full">{org}</span>
+                  <h3 className="text-sm font-semibold text-gray-900">{title}</h3>
+                </div>
+                <p className="text-sm text-gray-600 leading-relaxed mb-1.5">{desc}</p>
+                <span className="text-xs text-blue-600 font-mono">{url}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">Outcome measures used in research</h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {[
+              { name: 'VFQ-25 (Visual Function Questionnaire)', desc: 'NEI validated patient-reported outcome measure; 25-item subscales for near/distance activities, social function, and mental health.' },
+              { name: 'MNREAD Acuity Chart', desc: 'Standardized reading speed assessment; used to measure eccentric viewing and magnification outcomes.' },
+              { name: 'Melbourne Low-Vision ADL Index (MLVAI)', desc: 'Performance-based ADL assessment validated for low vision populations.' },
+              { name: 'IVI (Impact of Vision Impairment)', desc: 'Self-report measure capturing emotional, daily activity, and social participation impact of low vision.' },
+            ].map(({ name, desc }) => (
+              <div key={name} className="bg-gray-50 rounded-xl border border-gray-200 p-4">
+                <h3 className="text-sm font-semibold text-gray-900 mb-1">{name}</h3>
+                <p className="text-xs text-gray-600">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-3">
+          <a href="/professionals" className="text-sm text-blue-700 hover:underline">← All Professional Resources</a>
+          <a href="/professionals/training-library" className="text-sm text-blue-700 hover:underline">Training Library</a>
+          <a href="/professionals/functional-outcomes-metrics" className="text-sm text-blue-700 hover:underline">Functional Outcomes & Metrics</a>
+        </div>
+      </div>
+    </ContentPageLayout>
+  );
+}
+
 export function TemplatesPage() {
   return (
     <ContentPageLayout

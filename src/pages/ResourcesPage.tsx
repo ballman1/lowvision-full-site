@@ -4,6 +4,7 @@ import { Search, MapPin, Phone, Globe, X, Filter, ExternalLink } from 'lucide-re
 import { directorySeedData, US_STATES, US_STATE_NAMES, SERVICE_TYPES } from '../data/directorySeed';
 import type { Resource } from '../types';
 import { DisclaimerBox } from '../components/ui/DisclaimerBox';
+import { PageSEO } from '../components/seo/PageSEO';
 
 function ResourceCard({ resource }: { resource: Resource }) {
   return (
@@ -138,6 +139,11 @@ export function ResourcesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <PageSEO
+        title="Find Local Low Vision Resources"
+        description="Search clinics, state agencies, vision rehabilitation programs, and support services near you. Filter by state, service type, and virtual availability."
+        breadcrumbs={[{ label: 'Resources', href: '/resources' }]}
+      />
       <div className="bg-blue-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <h1 className="text-3xl font-bold mb-1">Find Local Resources</h1>

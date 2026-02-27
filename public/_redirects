@@ -1,0 +1,5 @@
+# Redirect www to apex (301 permanent)
+https://www.lowvisionnavigator.org/* https://lowvisionnavigator.org/:splat 301!
+
+# SPA fallback — all client-side routes serve index.html
+/*  /index.html  200

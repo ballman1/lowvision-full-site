@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Breadcrumb } from './Breadcrumb';
 import { DisclaimerBox } from './DisclaimerBox';
+import { PageSEO } from '../seo/PageSEO';
 
 interface BreadcrumbItem {
   label: string;
@@ -10,22 +11,28 @@ interface BreadcrumbItem {
 interface ContentPageLayoutProps {
   title: string;
   subtitle?: string;
+  description?: string;
   breadcrumbs?: BreadcrumbItem[];
   showDisclaimer?: boolean;
   headerBg?: string;
+  schema?: object | object[];
   children: ReactNode;
 }
 
 export function ContentPageLayout({
   title,
   subtitle,
+  description,
   breadcrumbs,
   showDisclaimer = false,
   headerBg = 'bg-blue-800',
+  schema,
   children,
 }: ContentPageLayoutProps) {
+  const metaDescription = description ?? subtitle ?? `Learn about ${title} — guidance, resources, and support on Low Vision Navigator.`;
   return (
     <div>
+      <PageSEO title={title} description={metaDescription} breadcrumbs={breadcrumbs} schema={schema} />
       <div className={`${headerBg} text-white`}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           {breadcrumbs && (

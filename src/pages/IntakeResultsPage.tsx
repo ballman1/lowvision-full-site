@@ -4,6 +4,7 @@ import { CheckSquare, Square, ArrowRight, Printer, RefreshCw, AlertTriangle } fr
 import { useIntake } from '../hooks/useIntake';
 import { generateIntakeResults } from '../lib/intake/rules';
 import { DisclaimerBox } from '../components/ui/DisclaimerBox';
+import { PageSEO } from '../components/seo/PageSEO';
 import type { IntakeResult, FollowUpItem } from '../lib/intake/types';
 
 const PRIORITY_STYLES: Record<string, string> = {
@@ -60,6 +61,11 @@ export function IntakeResultsPage() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
+      <PageSEO
+        title="Your Low Vision Care Plan"
+        description="Your personalized low vision care plan based on your intake questionnaire."
+        noIndex
+      />
       <div className="bg-blue-800 text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
           <p className="text-blue-300 text-sm font-medium mb-1">Your Personalized Plan</p>

@@ -560,6 +560,55 @@ export function PartnersPage() {
           </p>
         </div>
 
+        {/* VisionServe Alliance spotlight */}
+        <div className="bg-blue-50 rounded-xl border border-blue-200 p-6">
+          <div className="flex items-start gap-4">
+            <div className="shrink-0 w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-700 text-lg font-bold">
+              V
+            </div>
+            <div className="min-w-0">
+              <h2 className="text-base font-semibold text-gray-900 mb-1">
+                VisionServe Alliance
+              </h2>
+              <p className="text-sm text-gray-700 leading-relaxed mb-3">
+                VisionServe Alliance is a consortium of 160+ US and Canadian organizations — including nonprofits, schools, rehabilitation centers, and employment agencies — collectively serving more than 150,000 people with blindness and low vision. Their member network spans rehabilitation therapy, orientation and mobility, assistive technology, employment support, guide dog services, and Braille production.
+              </p>
+              <p className="text-sm text-gray-700 leading-relaxed mb-3">
+                VisionServe Alliance operates <strong>VisionRefer</strong>, a free, HIPAA-compliant electronic referral system that connects eye care professionals to accredited vision rehabilitation providers. VisionRefer is currently active across 17+ states, with full coverage in Florida, Oklahoma, and Indiana. Clinicians can track referral status and receive progress updates while patients remain in the care of their referring provider.
+              </p>
+              <p className="text-sm text-gray-700 leading-relaxed mb-4">
+                VisionServe Alliance also leads the <strong>Aging and Vision Loss National Coalition (AVLNC)</strong>, a 160+ organization consortium advocating for increased access and quality of life for adults 65+ with vision loss. Key AVLNC initiatives include the <em>Big Data Project</em> — county- and state-level reports on vision impairment rates developed with The Ohio State University College of Optometry — and <em>Teddie-Joy's Law</em>, bipartisan federal legislation aimed at expanding community-based vision rehabilitation in underserved areas.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="https://visionservealliance.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-4 py-2 bg-blue-700 text-white font-semibold text-sm rounded-lg hover:bg-blue-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2"
+                >
+                  Visit VisionServe Alliance
+                </a>
+                <a
+                  href="https://visionservealliance.org/visionrefer/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-4 py-2 bg-white text-blue-700 font-semibold text-sm rounded-lg border border-blue-300 hover:bg-blue-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2"
+                >
+                  Learn about VisionRefer
+                </a>
+                <a
+                  href="https://visionservealliance.org/aging-and-vision-loss/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-4 py-2 bg-white text-blue-700 font-semibold text-sm rounded-lg border border-blue-300 hover:bg-blue-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2"
+                >
+                  About AVLNC
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div>
           <h2 className="text-xl font-bold text-gray-900 mb-5">Partnership categories</h2>
           <div className="space-y-4">

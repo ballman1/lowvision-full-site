@@ -14,12 +14,27 @@ const domains = [
   { id: 'manual-dexterity', title: 'Manual Dexterity & Handling', desc: 'Affects device selection and usability—particularly for optical devices and Braille tools.', tests: ['Fine motor observation', 'Grip strength screen', 'Device handling trial', 'OT consultation'] },
 ];
 
+const diagnosticSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Core Assessment Domains for Low Vision Rehabilitation',
+  description: 'Key diagnostic domains assessed in a comprehensive low vision evaluation, from acuity and visual fields to functional goals and manual dexterity.',
+  numberOfItems: domains.length,
+  itemListElement: domains.map((d, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: d.title,
+    description: d.desc,
+  })),
+};
+
 export function DiagnosticResourcesPage() {
   return (
     <ContentPageLayout
       title="Diagnostic Resources"
       subtitle="Core assessment domains for low vision rehabilitation—from acuity and fields to function and goals."
       breadcrumbs={[{ label: 'For Professionals', href: '/professionals' }, { label: 'Diagnostic Resources' }]}
+      schema={diagnosticSchema}
     >
       <div className="mb-8 p-5 bg-blue-50 rounded-2xl border border-blue-100">
         <h2 className="text-base font-semibold text-blue-900 mb-2">Problem-oriented approach</h2>

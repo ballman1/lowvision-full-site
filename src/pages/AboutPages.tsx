@@ -11,6 +11,7 @@ function aboutPageSchema(name: string) {
     dateModified: '2026-02-27',
     author: { '@id': 'https://lowvisionnavigator.org/#organization' },
     publisher: { '@id': 'https://lowvisionnavigator.org/#organization' },
+    isPartOf: { '@id': 'https://lowvisionnavigator.org/#website' },
   };
 }
 

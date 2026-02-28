@@ -14,11 +14,26 @@ export function ReferralPathwaysPage() {
     { title: 'Neuro-Ophthalmology', when: ['Suspected CVI (cortical visual impairment)', 'Optic neuropathy of unclear etiology', 'Visual field defect with possible neurological origin', 'Incongruent acuity and visual field findings'], notes: 'Required for complete workup when clinical picture doesn\'t fit. Affects both prognosis and rehab planning.' },
   ];
 
+  const referralSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Low Vision Referral Pathways for Clinicians',
+    description: 'When to refer patients to O&M, VRT, OT, TVI, AT specialists, social work, and neuro-ophthalmology for low vision rehabilitation.',
+    numberOfItems: pathways.length,
+    itemListElement: pathways.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: p.title,
+      description: p.notes,
+    })),
+  };
+
   return (
     <ContentPageLayout
       title="Referral Pathways"
       subtitle="When to refer, who to refer to, and what to include in your referral."
       breadcrumbs={[{ label: 'For Professionals', href: '/professionals' }, { label: 'Referral Pathways' }]}
+      schema={referralSchema}
     >
       <div className="space-y-5">
         {pathways.map((p) => (
@@ -58,11 +73,25 @@ export function FunctionalOutcomesPage() {
     { title: 'Follow-Up Timing', metrics: ['2 weeks: initial device comfort and orientation check', '6 weeks: skill development and integration assessment', '3 months: long-term adoption and goal attainment', 'Annual: reassessment if condition is progressive'] },
   ];
 
+  const outcomesSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Functional Outcome Metrics for Low Vision Rehabilitation',
+    description: 'Validated outcome measures for tracking rehabilitation progress across reading speed, ADL independence, mobility, device adoption, and quality of life.',
+    numberOfItems: domains.length,
+    itemListElement: domains.map((d, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: d.title,
+    })),
+  };
+
   return (
     <ContentPageLayout
       title="Functional Outcomes & Metrics"
       subtitle="Measuring what matters: function, participation, and quality of life—not just acuity."
       breadcrumbs={[{ label: 'For Professionals', href: '/professionals' }, { label: 'Outcomes & Metrics' }]}
+      schema={outcomesSchema}
     >
       <div className="grid sm:grid-cols-2 gap-5">
         {domains.map((d) => (
@@ -92,11 +121,25 @@ export function FollowUpProtocolsPage() {
     { trigger: 'Good acuity but poor real-world function', steps: ['Prioritize contrast sensitivity and visual fields testing', 'Assess mesopic function if not done', 'Evaluate fixation stability and PRL status', 'Consider CVI or neurological factors', 'Increase functional task assessment vs clinical testing'] },
   ];
 
+  const followUpSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Low Vision Follow-Up and Modification Protocols',
+    description: 'Systematic troubleshooting protocols for when initial low vision device or rehabilitation plans require modification.',
+    numberOfItems: protocols.length,
+    itemListElement: protocols.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: p.trigger,
+    })),
+  };
+
   return (
     <ContentPageLayout
       title="Follow-Up & Modification Protocols"
       subtitle="When the initial plan doesn't work—systematic approaches to finding what will."
       breadcrumbs={[{ label: 'For Professionals', href: '/professionals' }, { label: 'Follow-Up Protocols' }]}
+      schema={followUpSchema}
     >
       <div className="space-y-5">
         {protocols.map((p) => (
@@ -583,12 +626,27 @@ export function CodingCoverageGuidePage() {
     { code: 'H47.10', desc: 'Optic atrophy, unspecified' },
   ];
 
+  const codingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'CPT Codes for Low Vision and Rehabilitation Billing',
+    description: 'CPT and ICD-10 billing codes for low vision examinations, occupational therapy, and vision rehabilitation services, with Medicare documentation requirements.',
+    numberOfItems: cptCodes.length,
+    itemListElement: cptCodes.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: `CPT ${c.code}: ${c.desc}`,
+      description: c.notes,
+    })),
+  };
+
   return (
     <ContentPageLayout
       title="Billing, Coding & Coverage Guide"
       subtitle="CPT and ICD-10 codes for low vision and rehabilitation services, with Medicare documentation requirements and common denial patterns."
       breadcrumbs={[{ label: 'For Professionals', href: '/professionals' }, { label: 'Coding & Coverage' }]}
       description="Billing and coding reference for low vision exams and rehabilitation: CPT codes, ICD-10 codes, Medicare documentation requirements, LMN templates, and common denial reasons."
+      schema={codingSchema}
     >
       <div className="space-y-10">
         <div className="mb-6 p-4 bg-amber-50 rounded-xl border border-amber-200">
@@ -705,11 +763,28 @@ export function TrainingLibraryPage() {
     },
   ];
 
+  const trainingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Professional Training Resources for Low Vision Specialists',
+    description: 'Curated certification programs, continuing education, and clinical guidelines for low vision rehabilitation professionals.',
+    numberOfItems: resources.reduce((n, cat) => n + cat.items.length, 0),
+    itemListElement: resources.flatMap((cat) =>
+      cat.items.map((item, j) => ({
+        '@type': 'ListItem',
+        position: resources.slice(0, resources.indexOf(cat)).reduce((n, c) => n + c.items.length, 0) + j + 1,
+        name: item.title,
+        description: item.desc,
+      }))
+    ),
+  };
+
   return (
     <ContentPageLayout
       title="Training Library for Low Vision Professionals"
       subtitle="Certification programs, continuing education, clinical practice guidelines, and assistive technology training resources."
       breadcrumbs={[{ label: 'For Professionals', href: '/professionals' }, { label: 'Training Library' }]}
+      schema={trainingSchema}
     >
       <div className="space-y-8">
         {resources.map(({ category, items }) => (
@@ -746,11 +821,26 @@ export function ResearchEvidencePage() {
     { title: 'Tele-Rehabilitation for Low Vision: Feasibility and Outcomes', summary: 'Post-pandemic research demonstrating non-inferiority of tele-rehabilitation to in-person for ADL and reading outcomes, with superior access for rural and mobility-limited populations.', source: 'Optometry and Vision Science, 2021–2023' },
   ];
 
+  const researchSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Key Research Studies in Low Vision Rehabilitation',
+    description: 'Landmark clinical trials, systematic reviews, and practice guidelines for evidence-based low vision rehabilitation.',
+    numberOfItems: keyStudies.length,
+    itemListElement: keyStudies.map((s, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: s.title,
+      description: s.summary,
+    })),
+  };
+
   return (
     <ContentPageLayout
       title="Research & Evidence Base for Low Vision Rehabilitation"
       subtitle="Key studies, systematic reviews, and clinical practice guidelines supporting evidence-based low vision rehabilitation."
       breadcrumbs={[{ label: 'For Professionals', href: '/professionals' }, { label: 'Research & Evidence' }]}
+      schema={researchSchema}
     >
       <div className="space-y-10">
         <div className="bg-blue-50 border border-blue-100 rounded-xl p-5">

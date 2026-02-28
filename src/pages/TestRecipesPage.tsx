@@ -82,11 +82,25 @@ const recipes = [
 ];
 
 export function TestRecipesPage() {
+  const recipesSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Low Vision Test Selection Recipes by Patient Presentation',
+    description: 'Tiered diagnostic testing frameworks for common low vision patient presentations, organized by primary concern.',
+    numberOfItems: recipes.length,
+    itemListElement: recipes.map((r, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: r.title,
+    })),
+  };
+
   return (
     <ContentPageLayout
       title="Test Selection Recipes"
       subtitle="Tiered testing guides organized by patient presentation and primary concern."
       breadcrumbs={[{ label: 'For Professionals', href: '/professionals' }, { label: 'Test Recipes' }]}
+      schema={recipesSchema}
     >
       <div className="mb-6 p-4 bg-blue-50 rounded-xl border border-blue-100">
         <p className="text-sm text-blue-800">

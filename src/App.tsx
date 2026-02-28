@@ -220,6 +220,7 @@ function SearchPage() {
       <PageSEO
         title="Search"
         description="Search Low Vision Navigator for local resources, rehabilitation services, device guides, coverage information, and more."
+        noIndex
       />
       <h1 className="text-2xl font-bold text-gray-900 mb-6">Search</h1>
       <input type="search" placeholder="Search resources, topics, services..." className="w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 mb-4" autoFocus />

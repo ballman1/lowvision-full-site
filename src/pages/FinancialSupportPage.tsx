@@ -4,6 +4,18 @@ import { DisclaimerBox } from '../components/ui/DisclaimerBox';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import { PageSEO } from '../components/seo/PageSEO';
 
+function finPageSchema(name: string, description: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    name,
+    description,
+    about: { '@type': 'MedicalCondition', name: 'Low Vision' },
+    audience: { '@type': 'Patient' },
+    reviewedBy: { '@type': 'Organization', name: 'Low Vision Navigator Clinical Advisory Board' },
+  };
+}
+
 function SupportCard({ title, href, desc, bullets }: { title: string; href: string; desc: string; bullets: string[] }) {
   return (
     <div className="bg-white rounded-2xl border border-gray-200 p-6">
@@ -113,6 +125,7 @@ export function SSDIPage() {
       subtitle="Monthly disability benefits for workers who can no longer perform substantial gainful activity."
       breadcrumbs={[{ label: 'Financial Support', href: '/financial-support' }, { label: 'SSDI' }]}
       showDisclaimer
+      schema={finPageSchema('Social Security Disability Insurance (SSDI)', 'Monthly disability benefits for workers who can no longer perform substantial gainful activity.')}
     >
       <div className="space-y-8">
         <div className="grid md:grid-cols-2 gap-6">
@@ -162,6 +175,7 @@ export function SSIPage() {
       subtitle="Needs-based monthly payments for individuals who are blind, disabled, or elderly with limited income."
       breadcrumbs={[{ label: 'Financial Support', href: '/financial-support' }, { label: 'SSI' }]}
       showDisclaimer
+      schema={finPageSchema('Supplemental Security Income (SSI)', 'Needs-based monthly payments for individuals who are blind, disabled, or elderly with limited income.')}
     >
       <div className="space-y-8">
         <div className="grid md:grid-cols-2 gap-6">
@@ -194,6 +208,7 @@ export function TransportationPage() {
       title="Transportation Assistance for Low Vision & Blindness"
       subtitle="Paratransit, Medicaid non-emergency medical transport, rideshare programs, and reduced-fare transit options."
       breadcrumbs={[{ label: 'Financial Support', href: '/financial-support' }, { label: 'Transportation' }]}
+      schema={finPageSchema('Transportation Assistance for Low Vision & Blindness', 'Paratransit, Medicaid non-emergency medical transport, rideshare programs, and reduced-fare transit options.')}
       showDisclaimer
     >
       <div className="space-y-8">
@@ -287,6 +302,7 @@ export function BlindAgenciesPage() {
       title="State Blind Agencies & Commissions"
       subtitle="Federally funded state programs that provide free or low-cost rehabilitation, training, technology, and financial support for people with visual impairments."
       breadcrumbs={[{ label: 'Financial Support', href: '/financial-support' }, { label: 'Blind Agencies & Commissions' }]}
+      schema={finPageSchema('State Blind Agencies & Commissions', 'Federally funded state programs that provide free or low-cost rehabilitation, training, technology, and financial support for people with visual impairments.')}
     >
       <div className="space-y-8">
         <div className="prose prose-gray max-w-none">
@@ -350,6 +366,7 @@ export function EmergencyHelpPage() {
       title="Emergency Financial Assistance for Vision Loss"
       subtitle="When you need help now — programs for people facing urgent financial hardship related to blindness or low vision."
       breadcrumbs={[{ label: 'Financial Support', href: '/financial-support' }, { label: 'Emergency Help' }]}
+      schema={finPageSchema('Emergency Financial Assistance for Vision Loss', 'When you need help now — programs for people facing urgent financial hardship related to blindness or low vision.')}
       showDisclaimer
     >
       <div className="space-y-8">
@@ -428,6 +445,7 @@ export function TaxReliefPage() {
       title="Tax Relief for Visual Disabilities"
       subtitle="Federal and state tax benefits, ABLE accounts, and Canadian RDSP programs."
       breadcrumbs={[{ label: 'Financial Support', href: '/financial-support' }, { label: 'Tax Relief' }]}
+      schema={finPageSchema('Tax Relief for Visual Disabilities', 'Federal and state tax benefits, ABLE accounts, and Canadian RDSP programs.')}
       showDisclaimer
     >
       <div className="space-y-8">

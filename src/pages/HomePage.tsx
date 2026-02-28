@@ -29,6 +29,14 @@ const homeSchema = [
     name: 'Low Vision Navigator',
     url: 'https://lowvisionnavigator.org/',
     publisher: { '@id': 'https://lowvisionnavigator.org/#organization' },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://lowvisionnavigator.org/search?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
   },
 ];
 

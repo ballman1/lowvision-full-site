@@ -5,6 +5,7 @@ import { US_STATES, US_STATE_NAMES } from '../../data/directorySeed';
 
 const SERVICE_CHIPS = [
   'Low Vision Clinic',
+  'VA Blind Rehab Center',
   'O&M Training',
   'Assistive Technology',
   'Talking Book Library',

@@ -58,6 +58,35 @@ export function ReferralPathwaysPage() {
             </div>
           </div>
         ))}
+
+        {/* VisionRefer callout */}
+        <div className="bg-teal-50 rounded-2xl border border-teal-200 p-6">
+          <h2 className="text-base font-bold text-gray-900 mb-2">Electronic referrals via VisionRefer</h2>
+          <p className="text-sm text-gray-700 leading-relaxed mb-3">
+            <strong>VisionRefer</strong> is a free, HIPAA-compliant electronic referral platform operated by VisionServe Alliance that connects eye care and medical professionals to accredited vision rehabilitation providers. Once a referral is submitted, the referring clinician receives status updates as the patient progresses — while the patient remains under their care.
+          </p>
+          <ul className="space-y-1.5 mb-4">
+            {[
+              'Active in 17+ states; full county coverage in Florida, Oklahoma, and Indiana',
+              'Only VisionServe Alliance accredited member agencies can receive referrals',
+              'Free for referring providers and patients',
+              'Tracks referral status so you can follow patient progress',
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
+                <CheckCircle className="h-3.5 w-3.5 text-teal-500 mt-0.5 shrink-0" aria-hidden="true" />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <a
+            href="https://visionservealliance.org/visionrefer/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-4 py-2 bg-teal-700 text-white font-semibold text-sm rounded-lg hover:bg-teal-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-2"
+          >
+            Learn about VisionRefer
+          </a>
+        </div>
       </div>
     </ContentPageLayout>
   );
@@ -209,6 +238,13 @@ REFERRAL REQUESTED
   [ ] Assistive Technology Specialist
   [ ] Social Work / Care Coordination / Benefits Navigation
   [ ] Neuro-Ophthalmology
+  [ ] Other: ___________________________________________________
+
+REFERRAL SUBMISSION METHOD
+  [ ] Direct phone/fax to agency
+  [ ] VisionRefer (free HIPAA-compliant electronic referral — visionservealliance.org/visionrefer)
+      Active in 17+ states; connects to accredited VisionServe Alliance member agencies.
+  [ ] State blind agency intake portal
   [ ] Other: ___________________________________________________
 
 SPECIAL CONSIDERATIONS

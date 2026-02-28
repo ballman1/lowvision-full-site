@@ -57,6 +57,16 @@ function CoveragePageTemplate({
   relatedLinks: { label: string; href: string }[];
   disclaimer?: string;
 }) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    name: title,
+    description: subtitle,
+    about: { '@type': 'MedicalCondition', name: 'Low Vision' },
+    audience: { '@type': 'Patient' },
+    reviewedBy: { '@type': 'Organization', name: 'Low Vision Navigator Clinical Advisory Board' },
+  };
+
   return (
     <ContentPageLayout
       title={title}
@@ -64,6 +74,7 @@ function CoveragePageTemplate({
       breadcrumbs={[{ label: 'Coverage & Funding', href: '/coverage-funding' }, { label: breadcrumb }]}
       showDisclaimer
       headerBg="bg-blue-800"
+      schema={schema}
     >
       {disclaimer && (
         <div className="mb-6 flex gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">

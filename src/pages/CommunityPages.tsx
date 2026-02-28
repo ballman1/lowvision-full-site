@@ -22,12 +22,23 @@ function CommunityPageTemplate({
   keyQuestions: string[];
   relatedLinks: { label: string; href: string }[];
 }) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    name: title,
+    description: subtitle,
+    about: { '@type': 'MedicalCondition', name: 'Low Vision' },
+    audience: { '@type': 'Patient' },
+    reviewedBy: { '@type': 'Organization', name: 'Low Vision Navigator Clinical Advisory Board' },
+  };
+
   return (
     <ContentPageLayout
       title={title}
       subtitle={subtitle}
       breadcrumbs={[{ label: 'Community & Support', href: '/community-support' }, { label: breadcrumb }]}
       headerBg="bg-green-800"
+      schema={schema}
     >
       <div className="space-y-8">
         <div className="prose prose-sm max-w-none">

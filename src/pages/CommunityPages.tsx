@@ -377,7 +377,7 @@ export function SeniorSupportPage() {
       title="Senior Support for Vision Loss"
       subtitle="Age-related vision loss is common—but loss of independence is not inevitable."
       breadcrumb="Senior Support"
-      whatSupportLooksLike="Support for older adults with vision loss addresses multiple intersecting needs: clinical care, rehabilitation, home safety, caregiver support, and social connection. Many seniors with AMD, glaucoma, or diabetic retinopathy have lived well with vision loss for years using appropriate services. Area Agencies on Aging, state blind agencies, and programs like VIST (for Veterans) provide structured support."
+      whatSupportLooksLike="Support for older adults with vision loss addresses multiple intersecting needs: clinical care, rehabilitation, home safety, caregiver support, and social connection. Many seniors with AMD, glaucoma, or diabetic retinopathy have lived well with vision loss for years using appropriate services. Area Agencies on Aging, state blind agencies, and programs like VIST (for Veterans) provide structured support. The Aging and Vision Loss National Coalition (AVLNC), led by VisionServe Alliance, advocates nationally for expanded rehabilitation access and independence services for older adults."
       whoItIsFor={[
         'Adults 65+ experiencing age-related macular degeneration, glaucoma, or diabetic retinopathy',
         'Seniors who have stopped activities (reading, driving) due to vision changes',
@@ -391,6 +391,7 @@ export function SeniorSupportPage() {
         'Contact your local Area Agency on Aging for community support programs',
         'Ask about home safety assessment from a VRT or OT',
         'Connect with the Braille Institute, Lighthouse for the Blind, or CNIB for local programs',
+        'Use the VisionServe Alliance member directory (visionservealliance.org) to find an accredited rehabilitation agency near you',
       ]}
       keyQuestions={[
         'Does my state blind agency provide services for seniors (not just working age)?',

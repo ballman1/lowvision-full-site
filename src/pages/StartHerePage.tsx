@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { User, Users, Stethoscope, BookOpen, Briefcase, ArrowRight, CheckCircle } from 'lucide-react';
 import { ContentPageLayout } from '../components/ui/ContentPageLayout';
+import { PageSEO } from '../components/seo/PageSEO';
 
 const audiencePaths = [
   { Icon: User, label: "I'm a Patient", desc: "Get a clear plan for care, devices, and training.", href: '/intake/start?mode=patient', color: 'text-blue-600' },
@@ -24,9 +25,28 @@ const nextSteps = [
   { n: '3', text: 'Explore assistive devices, rehabilitation options, and coverage paths using this site.' },
 ];
 
+const startHereSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'First Steps After a Low Vision Diagnosis',
+  description: 'Three immediate steps to take after receiving a low vision diagnosis or referral.',
+  step: nextSteps.map((s, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    text: s.text,
+  })),
+};
+
 export function StartHerePage() {
   return (
     <div>
+      <PageSEO
+        title="Start Here — Find Your Path with Low Vision"
+        description="New to low vision? Find care, devices, and rehabilitation in minutes. Choose your path — patient, caregiver, clinician, teacher, or employer — and get a clear plan."
+        canonical="https://lowvisionnavigator.org/start-here"
+        breadcrumbs={[{ label: 'Start Here', href: '/start-here' }]}
+        schema={startHereSchema}
+      />
       <div className="bg-gradient-to-br from-blue-800 to-blue-900 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <p className="text-blue-300 text-sm font-semibold mb-2">Start Here</p>

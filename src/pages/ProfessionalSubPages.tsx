@@ -705,11 +705,28 @@ export function TrainingLibraryPage() {
     },
   ];
 
+  const trainingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Professional Training Resources for Low Vision Specialists',
+    description: 'Curated certification programs, continuing education, and clinical guidelines for low vision rehabilitation professionals.',
+    numberOfItems: resources.reduce((n, cat) => n + cat.items.length, 0),
+    itemListElement: resources.flatMap((cat) =>
+      cat.items.map((item, j) => ({
+        '@type': 'ListItem',
+        position: resources.slice(0, resources.indexOf(cat)).reduce((n, c) => n + c.items.length, 0) + j + 1,
+        name: item.title,
+        description: item.desc,
+      }))
+    ),
+  };
+
   return (
     <ContentPageLayout
       title="Training Library for Low Vision Professionals"
       subtitle="Certification programs, continuing education, clinical practice guidelines, and assistive technology training resources."
       breadcrumbs={[{ label: 'For Professionals', href: '/professionals' }, { label: 'Training Library' }]}
+      schema={trainingSchema}
     >
       <div className="space-y-8">
         {resources.map(({ category, items }) => (
@@ -746,11 +763,26 @@ export function ResearchEvidencePage() {
     { title: 'Tele-Rehabilitation for Low Vision: Feasibility and Outcomes', summary: 'Post-pandemic research demonstrating non-inferiority of tele-rehabilitation to in-person for ADL and reading outcomes, with superior access for rural and mobility-limited populations.', source: 'Optometry and Vision Science, 2021–2023' },
   ];
 
+  const researchSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Key Research Studies in Low Vision Rehabilitation',
+    description: 'Landmark clinical trials, systematic reviews, and practice guidelines for evidence-based low vision rehabilitation.',
+    numberOfItems: keyStudies.length,
+    itemListElement: keyStudies.map((s, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: s.title,
+      description: s.summary,
+    })),
+  };
+
   return (
     <ContentPageLayout
       title="Research & Evidence Base for Low Vision Rehabilitation"
       subtitle="Key studies, systematic reviews, and clinical practice guidelines supporting evidence-based low vision rehabilitation."
       breadcrumbs={[{ label: 'For Professionals', href: '/professionals' }, { label: 'Research & Evidence' }]}
+      schema={researchSchema}
     >
       <div className="space-y-10">
         <div className="bg-blue-50 border border-blue-100 rounded-xl p-5">

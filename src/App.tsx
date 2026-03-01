@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Suspense, lazy, useEffect } from 'react';
 import { Layout } from './components/layout/Layout';
-import { PageSEO } from './components/seo/PageSEO';
+import { StartHereWhatIsPage } from './pages/StartHereWhatIsPage';
+import { StartHereNextStepsPage } from './pages/StartHereNextStepsPage';
+import { SearchPage } from './pages/SearchPage';
 
 // Helper: lazy-load a named export from a module
 function lazyNamed<T extends object>(loader: () => Promise<T>, name: keyof T) {
@@ -90,144 +92,6 @@ function LoadingSpinner() {
   );
 }
 
-const whatIsLowVisionSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'MedicalWebPage',
-  about: {
-    '@type': 'MedicalCondition',
-    name: 'Low Vision',
-    alternateName: ['Visual Impairment', 'Partial Sight', 'Partial Vision Loss'],
-    description: 'Low vision is a significant visual impairment that cannot be fully corrected with glasses, contact lenses, medication, or surgery but is not total blindness.',
-  },
-};
-
-function StartHereWhatIsPage() {
-  return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-      <PageSEO
-        title="What Is Low Vision?"
-        description="Low vision is a significant visual impairment that cannot be fully corrected with glasses or surgery but is not total blindness. Learn about types, definitions, and next steps."
-        breadcrumbs={[{ label: 'Start Here', href: '/start-here' }, { label: 'What Is Low Vision?' }]}
-        schema={whatIsLowVisionSchema}
-      />
-      <nav className="text-xs text-gray-400 mb-6 flex gap-1.5">
-        <a href="/" className="hover:text-blue-700">Home</a>
-        <span>/</span>
-        <a href="/start-here" className="hover:text-blue-700">Start Here</a>
-        <span>/</span>
-        <span className="text-gray-700">What Is Low Vision</span>
-      </nav>
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">What Is Low Vision?</h1>
-      <div className="space-y-5 text-gray-700 leading-relaxed">
-        <p className="text-lg"><strong>Low vision</strong> is a significant visual impairment that cannot be fully corrected with glasses, contact lenses, medication, or surgery—but is not total blindness.</p>
-        <p>Most people with low vision have some usable sight. The clinical definition typically includes best-corrected visual acuity of 20/70 or worse in the better eye, or significant visual field loss (a reduced area of sight). But definitions matter less than function—<em>what you can and can't do in daily life</em>.</p>
-        <h2 className="text-xl font-bold text-gray-900 mt-6">What it is NOT</h2>
-        <ul className="list-disc list-inside space-y-1.5 text-gray-600">
-          <li>It is not blindness (though some people with "low vision" have very limited sight)</li>
-          <li>It is not fixable with better glasses in most cases</li>
-          <li>It is not a diagnosis—it describes functional impact across many conditions</li>
-          <li>It is not a reason to stop doing the things that matter to you</li>
-        </ul>
-        <h2 className="text-xl font-bold text-gray-900 mt-6">Diagnosis does not equal prognosis</h2>
-        <p>Having a condition like macular degeneration or glaucoma does not mean you will lose all functional vision. Many people live active, independent lives with low vision using the right tools, training, and supports. Early rehabilitation significantly improves outcomes.</p>
-        <h2 className="text-xl font-bold text-gray-900 mt-6">Legal blindness</h2>
-        <p>Legal blindness is defined as best-corrected VA of 20/200 or worse in the better eye, or a visual field of 20 degrees or less. Legal blindness is an administrative and legal category—it does not mean total loss of sight and does not require total darkness to qualify for services.</p>
-      </div>
-    </div>
-  );
-}
-
-const howToNextStepsSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'HowTo',
-  name: 'Your First Next Steps After a Low Vision Diagnosis',
-  description: 'A practical guide to the first actions after learning you have low vision — from finding a specialist to exploring rehabilitation, devices, and funding options.',
-  step: [
-    {
-      '@type': 'HowToStep',
-      position: 1,
-      name: 'Schedule a low vision examination',
-      text: 'Look for a low vision optometrist, ophthalmologist, or clinic that specializes in low vision—not just general eye care. Bring a list of tasks that are difficult. Expect the appointment to take 1–2 hours.',
-    },
-    {
-      '@type': 'HowToStep',
-      position: 2,
-      name: 'Contact your state blind services agency',
-      text: 'Most states offer free or low-cost O&M training, rehabilitation therapy, and assistive technology through their blind services agency. No referral needed in most states—you can apply directly.',
-    },
-    {
-      '@type': 'HowToStep',
-      position: 3,
-      name: 'Learn what rehabilitation looks like',
-      text: 'Rehabilitation is not just for dramatic vision loss. If vision is affecting any daily task—reading, cooking, mobility, work—rehabilitation can help. Start with a functional vision assessment.',
-    },
-    {
-      '@type': 'HowToStep',
-      position: 4,
-      name: 'Explore assistive device options',
-      text: "Don't buy devices online without trying them first. State AT programs offer free demonstrations and short-term loans. A low vision specialist can recommend the right magnification level for your specific tasks.",
-    },
-    {
-      '@type': 'HowToStep',
-      position: 5,
-      name: 'Map your coverage and funding options',
-      text: 'Services and devices are often funded through state agencies, vocational rehabilitation, VA programs, or insurance. Use our Coverage & Funding section to find what applies to your situation.',
-    },
-    {
-      '@type': 'HowToStep',
-      position: 6,
-      name: 'Connect with community and peer support',
-      text: 'Talking with others who have navigated vision loss can be one of the most practical resources. Peer support programs, vision loss organizations, and online communities can reduce isolation and provide real-world advice.',
-    },
-  ],
-};
-
-function StartHereNextStepsPage() {
-  return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-      <PageSEO
-        title="Your First Next Steps After a Low Vision Diagnosis"
-        description="A practical guide to the first actions after learning you have low vision — from finding a specialist to exploring rehabilitation, devices, and funding options."
-        breadcrumbs={[{ label: 'Start Here', href: '/start-here' }, { label: 'Your First Next Steps' }]}
-        schema={howToNextStepsSchema}
-      />
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">Your First Next Steps</h1>
-      <div className="space-y-5">
-        {[
-          { n: 1, title: 'Schedule a low vision examination', body: 'Look for a low vision optometrist, ophthalmologist, or clinic that specializes in low vision—not just general eye care. Bring a list of tasks that are difficult. Expect the appointment to take 1–2 hours.' },
-          { n: 2, title: 'Contact your state blind services agency', body: 'Most states offer free or low-cost O&M training, rehabilitation therapy, and assistive technology through their blind services agency. No referral needed in most states—you can apply directly.' },
-          { n: 3, title: 'Learn what rehabilitation looks like', body: 'Rehabilitation is not just for dramatic vision loss. If vision is affecting any daily task—reading, cooking, mobility, work—rehabilitation can help. Start with a functional vision assessment.' },
-          { n: 4, title: 'Explore assistive device options', body: 'Don\'t buy devices online without trying them first. State AT programs offer free demonstrations and short-term loans. A low vision specialist can recommend the right magnification level for your specific tasks.' },
-          { n: 5, title: 'Map your coverage and funding options', body: 'Services and devices are often funded through state agencies, vocational rehabilitation, VA programs, or insurance. Use our Coverage & Funding section to find what applies to your situation.' },
-          { n: 6, title: 'Connect with community and peer support', body: 'Talking with others who have navigated vision loss can be one of the most practical resources. Peer support programs, vision loss organizations, and online communities can reduce isolation and provide real-world advice.' },
-        ].map(({ n, title, body }) => (
-          <div key={n} className="flex gap-4 bg-white rounded-xl border border-gray-200 p-5">
-            <span className="w-8 h-8 rounded-full bg-blue-700 text-white font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">{n}</span>
-            <div>
-              <h3 className="text-base font-semibold text-gray-900 mb-1">{title}</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">{body}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function SearchPage() {
-  return (
-    <div className="max-w-2xl mx-auto px-4 sm:px-6 py-14">
-      <PageSEO
-        title="Search"
-        description="Search Low Vision Navigator for local resources, rehabilitation services, device guides, coverage information, and more."
-        noIndex
-      />
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Search</h1>
-      <input type="search" placeholder="Search resources, topics, services..." className="w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 mb-4" autoFocus />
-      <p className="text-sm text-gray-500">Type to search for local resources, coverage information, device guides, and site content. Or <a href="/resources" className="text-blue-700 hover:underline">browse the full directory</a>.</p>
-    </div>
-  );
-}
 
 export default function App() {
   useEffect(() => {

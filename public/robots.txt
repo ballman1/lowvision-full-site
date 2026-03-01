@@ -1,7 +1,8 @@
 User-agent: *
 Allow: /
 
-# Block intake flow results (session-specific, not indexable)
+# Block non-indexable pages
+Disallow: /search
 Disallow: /intake/results
 Disallow: /intake/follow-up
 Disallow: /intake/results/printable-plan

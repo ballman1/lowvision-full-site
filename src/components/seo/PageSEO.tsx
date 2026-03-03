@@ -22,7 +22,8 @@ interface PageSEOProps {
 export function PageSEO({ title, description, canonical, breadcrumbs, schema, noIndex }: PageSEOProps) {
   const location = useLocation();
   const canonicalUrl = canonical ?? `${DOMAIN}${location.pathname}`;
-  const fullTitle = `${title} | ${SITE_NAME}`;
+  // Avoid "Low Vision Navigator | Low Vision Navigator" on the homepage
+  const fullTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
 
   const schemas: object[] = [];
 
@@ -46,6 +47,20 @@ export function PageSEO({ title, description, canonical, breadcrumbs, schema, no
   if (schema) {
     const extra = Array.isArray(schema) ? schema : [schema];
     schemas.push(...extra);
+  }
+
+  // Auto-inject SpeakableSpecification on all indexable pages so voice
+  // assistants (Google Assistant, Siri, etc.) know which headings to read.
+  if (!noIndex) {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      url: canonicalUrl,
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', 'h2', 'h3', 'dt'],
+      },
+    });
   }
 
   return (

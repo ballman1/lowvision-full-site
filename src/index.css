@@ -23,8 +23,31 @@ html.high-contrast {
   filter: contrast(1.5);
 }
 
+/* Respect OS-level "increase contrast" preference automatically */
+@media (prefers-contrast: more) {
+  :root {
+    filter: contrast(1.3);
+  }
+}
+
+/* Respect OS-level "reduce motion" preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @layer utilities {
+  /* Skip link: hidden until focused — first element in DOM for keyboard/screen-reader users */
   .skip-link {
-    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-blue-700 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg;
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:z-[200] focus:bg-blue-700 focus:text-white focus:px-6 focus:py-3 focus:text-sm focus:font-semibold focus:rounded-br-lg;
   }
 }

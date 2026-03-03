@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ContentPageLayout } from '../components/ui/ContentPageLayout';
 import { CheckCircle, ArrowRight, Type, Eye, Monitor } from 'lucide-react';
+import { useAccessibility } from '../hooks/useAccessibility';
 
 function aboutPageSchema(name: string) {
   return {
@@ -68,39 +69,12 @@ export function MissionPage() {
 }
 
 export function AccessibilityPage() {
-  const html = typeof document !== 'undefined' ? document.documentElement : null;
-
-  const [textSize, setTextSize] = useState<'normal' | 'lg' | 'xl'>(() => {
-    if (!html) return 'normal';
-    if (html.classList.contains('text-size-xl')) return 'xl';
-    if (html.classList.contains('text-size-lg')) return 'lg';
-    return 'normal';
-  });
-  const [highContrast, setHighContrast] = useState(() =>
-    !!html?.classList.contains('high-contrast')
-  );
-
-  function applyTextSize(size: 'normal' | 'lg' | 'xl') {
-    setTextSize(size);
-    if (!html) return;
-    html.classList.remove('text-size-lg', 'text-size-xl');
-    if (size === 'lg') html.classList.add('text-size-lg');
-    if (size === 'xl') html.classList.add('text-size-xl');
-    localStorage.setItem('lv-text-size', size);
-  }
-
-  function toggleHighContrast() {
-    const next = !highContrast;
-    setHighContrast(next);
-    if (!html) return;
-    html.classList.toggle('high-contrast', next);
-    localStorage.setItem('lv-high-contrast', next ? '1' : '0');
-  }
+  const { textSize, setTextSize, highContrast, toggleHighContrast } = useAccessibility();
 
   return (
     <ContentPageLayout
       title="Accessibility Statement"
-      subtitle="Our commitments, accessibility controls, and how to report issues."
+      subtitle="Accessibility controls (text size, high contrast) are available at the top of every page. This page documents our full commitments and how to report issues."
       breadcrumbs={[{ label: 'About', href: '/about' }, { label: 'Accessibility' }]}
       schema={aboutPageSchema('Accessibility Statement')}
     >
@@ -118,7 +92,7 @@ export function AccessibilityPage() {
                 {([['normal', 'A', 'Normal'], ['lg', 'A+', 'Large'], ['xl', 'A++', 'X-Large']] as const).map(([size, label, ariaLabel]) => (
                   <button
                     key={size}
-                    onClick={() => applyTextSize(size)}
+                    onClick={() => setTextSize(size)}
                     aria-pressed={textSize === size}
                     className={`flex-1 py-2.5 rounded-lg text-sm font-bold border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                       textSize === size ? 'bg-blue-700 border-blue-700 text-white' : 'border-blue-300 text-blue-700 hover:bg-blue-100'

@@ -68,19 +68,21 @@ export function MissionPage() {
 }
 
 export function AccessibilityPage() {
-  const html = document.documentElement;
+  const html = typeof document !== 'undefined' ? document.documentElement : null;
 
   const [textSize, setTextSize] = useState<'normal' | 'lg' | 'xl'>(() => {
+    if (!html) return 'normal';
     if (html.classList.contains('text-size-xl')) return 'xl';
     if (html.classList.contains('text-size-lg')) return 'lg';
     return 'normal';
   });
   const [highContrast, setHighContrast] = useState(() =>
-    html.classList.contains('high-contrast')
+    !!html?.classList.contains('high-contrast')
   );
 
   function applyTextSize(size: 'normal' | 'lg' | 'xl') {
     setTextSize(size);
+    if (!html) return;
     html.classList.remove('text-size-lg', 'text-size-xl');
     if (size === 'lg') html.classList.add('text-size-lg');
     if (size === 'xl') html.classList.add('text-size-xl');
@@ -90,6 +92,7 @@ export function AccessibilityPage() {
   function toggleHighContrast() {
     const next = !highContrast;
     setHighContrast(next);
+    if (!html) return;
     html.classList.toggle('high-contrast', next);
     localStorage.setItem('lv-high-contrast', next ? '1' : '0');
   }

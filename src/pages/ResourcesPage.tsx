@@ -150,6 +150,15 @@ export function ResourcesPage() {
         title="Find Local Low Vision Resources"
         description="Search clinics, state agencies, vision rehabilitation programs, and support services near you. Filter by state, service type, and virtual availability."
         breadcrumbs={[{ label: 'Resources', href: '/resources' }]}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'MedicalWebPage',
+          name: 'Low Vision Resource Directory',
+          description: 'Directory of low vision clinics, state blind agencies, vocational rehabilitation programs, O&M services, and vision rehabilitation therapy providers across the US and Canada.',
+          about: { '@type': 'MedicalCondition', name: 'Low Vision' },
+          audience: { '@type': 'Patient' },
+          reviewedBy: { '@type': 'Organization', name: 'Low Vision Navigator Clinical Advisory Board' },
+        }}
       />
       <div className="bg-blue-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">

@@ -10,6 +10,7 @@ import { DirectorySearchPanel } from '../components/home/DirectorySearchPanel';
 import { FAQPreview } from '../components/home/FAQPreview';
 import { CTABand } from '../components/home/CTABand';
 import { PageSEO } from '../components/seo/PageSEO';
+import { homepageFaqs } from '../data/faqs';
 
 const homeSchema = [
   {
@@ -37,6 +38,15 @@ const homeSchema = [
       },
       'query-input': 'required name=search_term_string',
     },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: homepageFaqs.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
   },
 ];
 

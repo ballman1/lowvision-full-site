@@ -87,7 +87,19 @@ export function ProfessionalsPage() {
         title="Clinical Workflow Hub — Low Vision Professionals"
         description="Diagnostic resources, test selection guides, referral pathways, outcome metrics, billing templates, and training tools for low vision clinicians and rehabilitation specialists."
         breadcrumbs={[{ label: 'For Professionals' }]}
-        schema={professionalsItemListSchema}
+        schema={[
+          professionalsItemListSchema,
+          {
+            '@context': 'https://schema.org',
+            '@type': 'MedicalWebPage',
+            name: 'Clinical Workflow Hub — Low Vision Professionals',
+            description: 'Diagnostic prioritization, referral logic, outcome metrics, and practical tools for low vision eye care providers and rehabilitation specialists.',
+            about: { '@type': 'MedicalCondition', name: 'Low Vision' },
+            audience: { '@type': 'MedicalAudience', audienceType: 'Clinician' },
+            specialty: { '@type': 'MedicalSpecialty', name: 'Ophthalmology' },
+            reviewedBy: { '@type': 'Organization', name: 'Low Vision Navigator Clinical Advisory Board' },
+          },
+        ]}
       />
       <div className="bg-blue-800 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">

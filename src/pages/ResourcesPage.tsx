@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Search, MapPin, Phone, Globe, X, Filter, ExternalLink } from 'lucide-react';
 import { directorySeedData, US_STATES, US_STATE_NAMES, SERVICE_TYPES } from '../data/directorySeed';
@@ -101,6 +101,13 @@ export function ResourcesPage() {
   );
   const [virtualOnly, setVirtualOnly] = useState(searchParams.get('virtual') === 'true');
   const [referralFree, setReferralFree] = useState(false);
+
+  useEffect(() => {
+    setQuery(searchParams.get('q') ?? '');
+    setSelectedState(searchParams.get('state') ?? '');
+    setSelectedTypes(searchParams.get('type') ? searchParams.get('type')!.split(',') : []);
+    setVirtualOnly(searchParams.get('virtual') === 'true');
+  }, [searchParams]);
 
   function clearFilters() {
     setQuery('');

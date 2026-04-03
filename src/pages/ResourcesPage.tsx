@@ -1,7 +1,14 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Search, MapPin, Phone, Globe, X, Filter, ExternalLink } from 'lucide-react';
-import { directorySeedData, US_STATES, US_STATE_NAMES, SERVICE_TYPES } from '../data/directorySeed';
+import {
+  directorySeedData,
+  US_STATES, US_STATE_NAMES,
+  CA_PROVINCES, CA_PROVINCE_NAMES,
+  AU_STATES, AU_STATE_NAMES,
+  COUNTRY_GROUPS, COUNTRY_NAMES,
+  SERVICE_TYPES,
+} from '../data/directorySeed';
 import type { Resource } from '../types';
 import { DisclaimerBox } from '../components/ui/DisclaimerBox';
 import { PageSEO } from '../components/seo/PageSEO';
@@ -92,9 +99,17 @@ function EmptyState({ onClear }: { onClear: () => void }) {
   );
 }
 
+function getRegionsForCountry(country: string): { code: string; name: string }[] | null {
+  if (country === 'US') return US_STATES.map((s) => ({ code: s, name: US_STATE_NAMES[s] || s }));
+  if (country === 'CA') return CA_PROVINCES.map((p) => ({ code: p, name: CA_PROVINCE_NAMES[p] || p }));
+  if (country === 'AU') return AU_STATES.map((s) => ({ code: s, name: AU_STATE_NAMES[s] || s }));
+  return null;
+}
+
 export function ResourcesPage() {
   const [searchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') ?? '');
+  const [selectedCountry, setSelectedCountry] = useState(searchParams.get('country') ?? '');
   const [selectedState, setSelectedState] = useState(searchParams.get('state') ?? '');
   const [selectedTypes, setSelectedTypes] = useState<string[]>(
     searchParams.get('type') ? searchParams.get('type')!.split(',') : searchParams.get('type=') ? [] : []
@@ -104,13 +119,20 @@ export function ResourcesPage() {
 
   useEffect(() => {
     setQuery(searchParams.get('q') ?? '');
+    setSelectedCountry(searchParams.get('country') ?? '');
     setSelectedState(searchParams.get('state') ?? '');
     setSelectedTypes(searchParams.get('type') ? searchParams.get('type')!.split(',') : []);
     setVirtualOnly(searchParams.get('virtual') === 'true');
   }, [searchParams]);
 
+  function handleCountryChange(country: string) {
+    setSelectedCountry(country);
+    setSelectedState('');
+  }
+
   function clearFilters() {
     setQuery('');
+    setSelectedCountry('');
     setSelectedState('');
     setSelectedTypes([]);
     setVirtualOnly(false);
@@ -120,6 +142,8 @@ export function ResourcesPage() {
   function toggleType(t: string) {
     setSelectedTypes((prev) => prev.includes(t) ? prev.filter((x) => x !== t) : [...prev, t]);
   }
+
+  const regions = selectedCountry ? getRegionsForCountry(selectedCountry) : null;
 
   const filtered = useMemo<Resource[]>(() => {
     return directorySeedData.filter((r) => {
@@ -131,18 +155,20 @@ export function ResourcesPage() {
           r.tags.some((tag) => tag.toLowerCase().includes(q)) ||
           (r.city ?? '').toLowerCase().includes(q) ||
           (r.state ?? '').toLowerCase().includes(q) ||
-          r.jurisdiction.toLowerCase().includes(q);
+          r.jurisdiction.toLowerCase().includes(q) ||
+          COUNTRY_NAMES[r.country]?.toLowerCase().includes(q);
         if (!matches) return false;
       }
+      if (selectedCountry && r.country !== selectedCountry) return false;
       if (selectedState && r.jurisdiction !== selectedState && r.state !== selectedState) return false;
       if (selectedTypes.length > 0 && !selectedTypes.some((t) => r.serviceTypes.includes(t))) return false;
       if (virtualOnly && !r.virtualAvailable) return false;
       if (referralFree && r.referralRequired) return false;
       return true;
     });
-  }, [query, selectedState, selectedTypes, virtualOnly, referralFree]);
+  }, [query, selectedCountry, selectedState, selectedTypes, virtualOnly, referralFree]);
 
-  const hasActiveFilters = !!(query || selectedState || selectedTypes.length || virtualOnly || referralFree);
+  const hasActiveFilters = !!(query || selectedCountry || selectedState || selectedTypes.length || virtualOnly || referralFree);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -163,7 +189,7 @@ export function ResourcesPage() {
       <div className="bg-blue-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <h1 className="text-3xl font-bold mb-1">Find Local Resources</h1>
-          <p className="text-blue-200 text-base">Search clinics, state agencies, rehab programs, and support services.</p>
+          <p className="text-blue-200 text-base">Search clinics, rehabilitation programs, national federations, and support services worldwide.</p>
         </div>
       </div>
 
@@ -207,21 +233,44 @@ export function ResourcesPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="res-state" className="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
-                    State / Province
+                  <label htmlFor="res-country" className="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
+                    Country
                   </label>
                   <select
-                    id="res-state"
-                    value={selectedState}
-                    onChange={(e) => setSelectedState(e.target.value)}
+                    id="res-country"
+                    value={selectedCountry}
+                    onChange={(e) => handleCountryChange(e.target.value)}
                     className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                   >
-                    <option value="">All states</option>
-                    {US_STATES.map((s) => (
-                      <option key={s} value={s}>{US_STATE_NAMES[s] || s}</option>
+                    <option value="">All countries</option>
+                    {COUNTRY_GROUPS.map((group) => (
+                      <optgroup key={group.label} label={group.label}>
+                        {group.countries.map((c) => (
+                          <option key={c.code} value={c.code}>{c.name}</option>
+                        ))}
+                      </optgroup>
                     ))}
                   </select>
                 </div>
+
+                {regions && (
+                  <div>
+                    <label htmlFor="res-state" className="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
+                      {selectedCountry === 'US' ? 'State' : selectedCountry === 'CA' ? 'Province / Territory' : 'State / Territory'}
+                    </label>
+                    <select
+                      id="res-state"
+                      value={selectedState}
+                      onChange={(e) => setSelectedState(e.target.value)}
+                      className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    >
+                      <option value="">All regions</option>
+                      {regions.map((r) => (
+                        <option key={r.code} value={r.code}>{r.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
 
                 <div>
                   <p className="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">Service Type</p>
@@ -300,15 +349,19 @@ export function ResourcesPage() {
             <div className="mt-8 p-5 bg-teal-50 rounded-xl border border-teal-100">
               <h3 className="text-sm font-semibold text-teal-900 mb-1">Don't see your area?</h3>
               <p className="text-sm text-teal-700 mb-3">
-                The NLS Talking Book Library serves all 50 states, and most state blind services agencies accept applications statewide.
+                {selectedCountry && selectedCountry !== 'US'
+                  ? 'Try selecting your country without a region filter, or search by organization name. You can also contact the national federation for your country to find local services.'
+                  : 'The NLS Talking Book Library serves all 50 states, and most state blind services agencies accept applications statewide.'}
               </p>
               <div className="flex flex-wrap gap-2">
-                <Link
-                  to="/resources?type=State+Blind+Agency"
-                  className="px-3 py-1.5 bg-teal-600 text-white text-xs font-medium rounded-lg hover:bg-teal-700 transition-colors"
-                >
-                  Find State Agency
-                </Link>
+                {(!selectedCountry || selectedCountry === 'US') && (
+                  <Link
+                    to="/resources?country=US&type=State+Blind+Agency"
+                    className="px-3 py-1.5 bg-teal-600 text-white text-xs font-medium rounded-lg hover:bg-teal-700 transition-colors"
+                  >
+                    Find State Agency
+                  </Link>
+                )}
                 <Link
                   to="/about/contact"
                   className="px-3 py-1.5 border border-teal-300 text-teal-700 text-xs font-medium rounded-lg hover:bg-teal-100 transition-colors"

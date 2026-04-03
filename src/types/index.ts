@@ -1,7 +1,7 @@
 export interface Resource {
   id: string;
   jurisdiction: string;
-  country: 'US' | 'CA';
+  country: string;
   organizationName: string;
   serviceTypes: string[];
   audienceTypes: string[];

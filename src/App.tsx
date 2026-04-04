@@ -83,6 +83,8 @@ const PartnersPage = lazyNamed(() => import('./pages/AboutPages'), 'PartnersPage
 const HowWeReviewResourcesPage = lazyNamed(() => import('./pages/AboutPages'), 'HowWeReviewResourcesPage');
 const FAQPage = lazyNamed(() => import('./pages/FAQPage'), 'FAQPage');
 const SavedPlanPage = lazyNamed(() => import('./pages/SavedPlanPage'), 'SavedPlanPage');
+const LoginPage = lazyNamed(() => import('./pages/LoginPage'), 'LoginPage');
+const AuthCallbackPage = lazyNamed(() => import('./pages/AuthCallbackPage'), 'AuthCallbackPage');
 
 function LoadingSpinner() {
   return (
@@ -194,6 +196,8 @@ export default function App() {
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/saved-plan" element={<SavedPlanPage />} />
             <Route path="/search" element={<SearchPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/auth/callback" element={<AuthCallbackPage />} />
 
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

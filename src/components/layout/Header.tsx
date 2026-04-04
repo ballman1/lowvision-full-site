@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Search, Bookmark, ChevronDown } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X, Search, Bookmark, ChevronDown, LogOut, User as UserIcon } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
 
 interface NavLink { label: string; href: string; }
 interface MenuColumn { heading?: string; links: NavLink[]; }
@@ -266,8 +267,12 @@ const navSections: NavSection[] = [
 export function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const menuRef = useRef<HTMLDivElement>(null);
+  const userMenuRef = useRef<HTMLDivElement>(null);
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     setOpenMenu(null);
@@ -278,6 +283,9 @@ export function Header() {
     function handleClick(e: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         setOpenMenu(null);
+      }
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
+        setUserMenuOpen(false);
       }
     }
     document.addEventListener('mousedown', handleClick);
@@ -337,6 +345,52 @@ export function Header() {
               >
                 Start Intake
               </Link>
+
+              {/* Auth: sign in button or user avatar dropdown */}
+              {user ? (
+                <div className="relative hidden sm:block" ref={userMenuRef}>
+                  <button
+                    aria-label="Account menu"
+                    aria-expanded={userMenuOpen}
+                    aria-haspopup="true"
+                    onClick={() => setUserMenuOpen(!userMenuOpen)}
+                    className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-100 text-blue-700 font-semibold text-sm hover:bg-blue-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700"
+                  >
+                    {(user.user_metadata?.full_name as string)?.[0]?.toUpperCase() ?? <UserIcon className="h-4 w-4" aria-hidden="true" />}
+                  </button>
+                  {userMenuOpen && (
+                    <div className="absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-lg border border-gray-200 py-1 z-50">
+                      <div className="px-4 py-2.5 border-b border-gray-100">
+                        <p className="text-sm font-medium text-gray-900 truncate">{user.user_metadata?.full_name as string ?? 'My Account'}</p>
+                        <p className="text-xs text-gray-500 truncate">{user.email}</p>
+                      </div>
+                      <Link
+                        to="/saved-plan"
+                        onClick={() => setUserMenuOpen(false)}
+                        className="flex items-center gap-2.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                      >
+                        <Bookmark className="h-4 w-4 text-gray-400" aria-hidden="true" />
+                        My Saved Plan
+                      </Link>
+                      <button
+                        onClick={async () => { setUserMenuOpen(false); await signOut(); navigate('/'); }}
+                        className="w-full flex items-center gap-2.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                      >
+                        <LogOut className="h-4 w-4 text-gray-400" aria-hidden="true" />
+                        Sign Out
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700"
+                >
+                  Sign In
+                </Link>
+              )}
+
               <button
                 aria-label="Toggle mobile menu"
                 aria-expanded={mobileOpen}
@@ -426,6 +480,22 @@ export function Header() {
                 >
                   Find Local Services
                 </Link>
+                {user ? (
+                  <button
+                    onClick={async () => { setMobileOpen(false); await signOut(); navigate('/'); }}
+                    className="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    <LogOut className="h-4 w-4" aria-hidden="true" />
+                    Sign Out
+                  </button>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="w-full text-center px-4 py-2.5 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    Sign In
+                  </Link>
+                )}
               </div>
             </nav>
           </div>

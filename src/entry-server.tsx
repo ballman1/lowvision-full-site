@@ -4,6 +4,7 @@ import { StaticRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from './components/layout/Layout';
+import { AuthProvider } from './contexts/AuthContext';
 
 // Direct imports — no lazy() for SSR compatibility
 import { HomePage } from './pages/HomePage';
@@ -49,6 +50,7 @@ import {
   ClinicalAdvisoryBoardPage, PartnersPage, HowWeReviewResourcesPage,
 } from './pages/AboutPages';
 import { FAQPage } from './pages/FAQPage';
+import { AssistantPage } from './pages/AssistantPage';
 import { SavedPlanPage } from './pages/SavedPlanPage';
 
 export function render(url: string) {
@@ -56,6 +58,8 @@ export function render(url: string) {
 
   const appHtml = renderToStaticMarkup(
     <HelmetProvider context={helmetContext}>
+      {/* Header calls useAuth(); without the provider every route silently renders empty */}
+      <AuthProvider>
       <StaticRouter location={url}>
         <Suspense fallback="">
           <Layout>
@@ -145,6 +149,7 @@ export function render(url: string) {
               <Route path="/about/contact" element={<ContactPage />} />
 
               <Route path="/faq" element={<FAQPage />} />
+              <Route path="/assistant" element={<AssistantPage />} />
               <Route path="/saved-plan" element={<SavedPlanPage />} />
               <Route path="/search" element={<SearchPage />} />
 
@@ -153,6 +158,7 @@ export function render(url: string) {
           </Layout>
         </Suspense>
       </StaticRouter>
+      </AuthProvider>
     </HelmetProvider>
   );
 

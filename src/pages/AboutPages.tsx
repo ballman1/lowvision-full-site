@@ -219,6 +219,12 @@ export function PrivacyPage() {
           </p>
         </section>
         <section>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">AI assistant</h2>
+          <p className="text-gray-600 leading-relaxed">
+            When you use the Ask the Assistant feature, your questions, the earlier messages in that conversation, and the address of the page you are on are sent to our AI provider, OpenAI, to generate an answer. We turn off OpenAI's option to save conversations, though OpenAI may keep request data for a limited time under its own policies. Answers may also search public websites. The conversation is kept in your browser only for the current tab and is erased when you close it. Please don't include personal details such as your full name, Social Security number, or medical record numbers. If you use voice input, your browser's built-in speech recognition converts your speech to text; depending on your browser, that audio may be processed by the browser maker's service. Read-aloud uses your device's built-in voices.
+          </p>
+        </section>
+        <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">Analytics</h2>
           <p className="text-gray-600 leading-relaxed">
             We collect anonymized, aggregated analytics to understand how the platform is used—which pages are most visited, how people navigate the intake flow, and where users encounter friction. This data does not include personally identifiable information.

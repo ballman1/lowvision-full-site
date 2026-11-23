@@ -78,6 +78,7 @@ const ROUTES = [
   '/about/privacy',
   '/about/contact',
   '/faq',
+  '/assistant',
   '/intake',
   '/intake/start',
 ];
@@ -94,6 +95,11 @@ async function main() {
   for (const route of ROUTES) {
     try {
       const { appHtml, helmetContext } = render(route);
+      // An error inside the <Suspense> boundary renders the empty fallback instead of
+      // throwing, which previously shipped blank pages. Treat that as a failure.
+      if (!appHtml || !appHtml.includes('id="main-content"')) {
+        throw new Error('rendered empty markup (a component probably threw during SSR)');
+      }
       const { helmet } = helmetContext;
 
       const headHtml = helmet
@@ -125,6 +131,10 @@ async function main() {
   rmSync(serverDir, { recursive: true, force: true });
 
   console.log(`\nPrerender complete: ${ok} rendered, ${skipped} skipped.`);
+  if (ok === 0) {
+    console.error('Prerender produced no pages.');
+    process.exit(1);
+  }
 }
 
 main().catch((err) => {

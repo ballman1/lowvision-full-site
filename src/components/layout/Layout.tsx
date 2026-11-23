@@ -4,6 +4,8 @@ import { useLocation } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { AccessibilityBar } from './AccessibilityBar';
+import { ChatLauncher } from '../chat/ChatLauncher';
+import { openChat } from '../chat/openChat';
 
 interface LayoutProps {
   children: ReactNode;
@@ -23,6 +25,16 @@ export function Layout({ children }: LayoutProps) {
       <ScrollToTop />
       {/* Skip link must be the very first focusable element */}
       <a href="#main-content" className="skip-link">Skip to main content</a>
+      <a
+        href="/assistant"
+        className="skip-link"
+        onClick={(e) => {
+          e.preventDefault();
+          openChat();
+        }}
+      >
+        Skip to the assistant
+      </a>
       {/* Accessibility controls visible on every page — no need to find a settings page */}
       <AccessibilityBar />
       <Header />
@@ -30,6 +42,7 @@ export function Layout({ children }: LayoutProps) {
         {children}
       </main>
       <Footer />
+      <ChatLauncher />
     </div>
   );
 }

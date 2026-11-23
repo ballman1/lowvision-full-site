@@ -21,3 +21,8 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Cloudflare local secrets
+.dev.vars
+.wrangler
+dist-node

@@ -82,6 +82,7 @@ const ClinicalAdvisoryBoardPage = lazyNamed(() => import('./pages/AboutPages'), 
 const PartnersPage = lazyNamed(() => import('./pages/AboutPages'), 'PartnersPage');
 const HowWeReviewResourcesPage = lazyNamed(() => import('./pages/AboutPages'), 'HowWeReviewResourcesPage');
 const FAQPage = lazyNamed(() => import('./pages/FAQPage'), 'FAQPage');
+const AssistantPage = lazyNamed(() => import('./pages/AssistantPage'), 'AssistantPage');
 const SavedPlanPage = lazyNamed(() => import('./pages/SavedPlanPage'), 'SavedPlanPage');
 const LoginPage = lazyNamed(() => import('./pages/LoginPage'), 'LoginPage');
 const AuthCallbackPage = lazyNamed(() => import('./pages/AuthCallbackPage'), 'AuthCallbackPage');
@@ -194,6 +195,8 @@ export default function App() {
             <Route path="/about/contact" element={<ContactPage />} />
 
             <Route path="/faq" element={<FAQPage />} />
+
+            <Route path="/assistant" element={<AssistantPage />} />
             <Route path="/saved-plan" element={<SavedPlanPage />} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/login" element={<LoginPage />} />

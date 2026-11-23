@@ -1,5 +1,10 @@
-# Redirect www to apex (301 permanent)
-https://www.lowvisionnavigator.org/* https://lowvisionnavigator.org/:splat 301!
-
-# SPA fallback — all client-side routes serve index.html
-/*  /index.html  200
+# Netlify reads this file; Cloudflare reads it too but ignores both rules
+# that used to be here:
+#  - "/*  /index.html  200" (SPA fallback) loops on Cloudflare. Cloudflare
+#    already serves index.html for unknown paths (wrangler.jsonc
+#    not_found_handling: "single-page-application"; Pages does this by
+#    default), and Netlify gets the same fallback from netlify.toml.
+#  - www → apex redirects need a full domain, which these files don't
+#    support on Cloudflare. Use a Redirect Rule in the Cloudflare dashboard
+#    (Rules → Redirect Rules → "Redirect from WWW to root"). netlify.toml
+#    still handles it on Netlify.

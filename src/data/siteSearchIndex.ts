@@ -518,4 +518,11 @@ export const siteSearchIndex: SiteSearchEntry[] = [
     section: 'FAQ',
     keywords: ['FAQ', 'questions', 'answers', 'common questions', 'help'],
   },
+  {
+    title: 'Ask the Assistant',
+    description: 'A free AI assistant that answers questions about low vision, blindness, caregiving, devices, coverage, and local services. Works with screen readers, voice input, and spoken answers.',
+    href: '/assistant',
+    section: 'Help',
+    keywords: ['assistant', 'chat', 'chatbot', 'ask', 'AI', 'help', 'voice', 'question', 'caregiver'],
+  },
 ];

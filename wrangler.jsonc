@@ -1,0 +1,34 @@
+// Cloudflare Workers configuration for Low Vision Navigator.
+//
+// Workers Builds (the "Workers Builds: lowvision-full-site" check) runs
+// `npx wrangler deploy`, which first runs `build.command` below, then uploads
+// the prerendered site in dist/ as static assets plus worker/index.ts, which
+// serves the AI assistant at /api/chat.
+//
+// Secret needed (not stored here): OPENAI_API_KEY
+//   npx wrangler secret put OPENAI_API_KEY
+// or Workers & Pages → lowvision-full-site → Settings → Variables and Secrets.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "lowvision-full-site",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-11-01",
+  "build": {
+    "command": "npm run build"
+  },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // Unknown paths get index.html so client-side routes like /resources/us/ohio work.
+    "not_found_handling": "single-page-application",
+    // Only API calls run the Worker; every other request is served straight from assets.
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    "CHAT_MODEL": "gpt-6-luna",
+    "CHAT_EFFORT": "medium"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
